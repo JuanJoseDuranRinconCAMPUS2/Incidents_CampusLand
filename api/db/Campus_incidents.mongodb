@@ -208,7 +208,7 @@ db.Priority_Inc.createIndex({ Pry_Name: 1 }, { unique: true });
 //🚧⛩️ Creation of the document_type collection ⛩️🚧
 
 use("Campus_incidents");
-db.createCollection("document_type", {
+db.createCollection("Document_type", {
     validator: {
        $jsonSchema: {
             bsonType: "object",
@@ -241,12 +241,12 @@ db.createCollection("document_type", {
 });
 
 use("Campus_incidents");
-db.document_type.createIndex({ Doc_Name: 1 }, { unique: true });
+db.Document_type.createIndex({ Doc_Name: 1 }, { unique: true });
 
 //🚧⛩️ Creation of the gender collection ⛩️🚧
 
 use("Campus_incidents");
-db.createCollection("gender", {
+db.createCollection("Gender", {
     validator: {
        $jsonSchema: {
             bsonType: "object",
@@ -279,7 +279,7 @@ db.createCollection("gender", {
 });
 
 use("Campus_incidents");
-db.gender.createIndex({ Gen_Name: 1 }, { unique: true });
+db.Gender.createIndex({ Gen_Name: 1 }, { unique: true });
 
 //🚧⛩️ Creation of the Comp_Status collection ⛩️🚧
 
@@ -322,7 +322,7 @@ db.Comp_Status.createIndex({ Est_Name: 1 }, { unique: true });
 //🚧⛩️ Creation of the user collection ⛩️🚧
 
 use("Campus_incidents");
-db.createCollection("user", {
+db.createCollection("User", {
     validator: {
        $jsonSchema: {
             bsonType: "object",
@@ -391,9 +391,9 @@ db.createCollection("user", {
 });
 
 use("Campus_incidents");
-db.user.createIndex({ Name: 1 }, { unique: true });
-db.user.createIndex({ Identity_card: 1 }, { unique: true });
-db.user.createIndex({ Email: 1 }, { unique: true });
+db.User.createIndex({ Name: 1 }, { unique: true });
+db.User.createIndex({ Identity_card: 1 }, { unique: true });
+db.User.createIndex({ Email: 1 }, { unique: true });
 
 //🚧⛩️ Creation of the Computers collection ⛩️🚧
 
@@ -633,10 +633,10 @@ db.createCollection("Screens", {
 
 //🕵️Cconstruction Validations and Users🕵️
 
-//🚧👩‍💻 Creation of the Diadems_Gamers collection 👩‍💻🚧
+//🚧👩‍💻 Creation of the User_Api collection 👩‍💻🚧
 
 use("Campus_incidents");
-db.createCollection("user_Api", {
+db.createCollection("User_Api", {
     validator: {
         $jsonSchema: {
            bsonType: "object",
@@ -699,15 +699,15 @@ db.createCollection("user_Api", {
     validationAction: "error",
     validationLevel: "strict"
 });
-//indices para evitar usuarios y correos repetidos.
+//indexes to avoid repeated users and emails.
 use("Campus_incidents");
-db.user_Api.createIndex({ name: 1 }, { unique: true });
-db.user_Api.createIndex({ email: 1 }, { unique: true });
+db.User_Api.createIndex({ name: 1 }, { unique: true });
+db.User_Api.createIndex({ email: 1 }, { unique: true });
 
-//🚧🔎Creacion de la coleccion roles_Api🔎🚧
+//🚧🔎 Creation of the Roles_Api collection 🔎🚧
 
 use("Campus_incidents");
-db.createCollection("roles_Api", {
+db.createCollection("Roles_Api", {
     validator: {
         $jsonSchema: {
            bsonType: "object",
@@ -745,19 +745,19 @@ db.createCollection("roles_Api", {
     validationLevel: "strict",
 });
 
-// "YoSoyCamper2134" cifrado con un desplazamiento de 4:
-// Texto cifrado: "CsWscGexsiv6578"
+// "YoSoyCamper2134" encrypted with an offset of 4:
+// "CsWscGexsiv6578" encrypted text.
 
-// "YoSoyAdmin2452" cifrado con un desplazamiento de 4:
-// Texto cifrado: "CsWscEhspi6896"
+// "YoSoyAdmin2452" encrypted with an offset of 4:
+// Encrypted text: "CsWscEhspi6896"
 
-// "YoSoyTrainer6325" cifrado con un desplazamiento de 4:
-// Texto cifrado: "CsWscXvepmrk0769"
+// "YoSoyTrainer6325" encrypted with an offset of 4:
+// Encrypted text: "CsWscXvepmrk0769"
 
-//🚧🎫Creacion de la coleccion tokens_Api🎫🚧
+//🚧🎫 Creation of the Tokens_Api collection 🎫🚧
 
 use("Campus_incidents");
-db.createCollection("tokens_Api", {
+db.createCollection("Tokens_Api", {
     validator: {
         $jsonSchema: {
            bsonType: "object",
@@ -791,10 +791,10 @@ db.createCollection("tokens_Api", {
 });
 
 
-//🪓🔎Inyeccion de documentos para la coleccion Roles_Api🔎🪓
+//🪓🔎Injection of documents for Roles_Api collection 🔎🪓
 
 use("Campus_incidents");
-db.roles_Api.insertMany([
+db.Roles_Api.insertMany([
     {
       "_id": "CsWscEhspi6896",
       "rol": "Admin",
@@ -813,7 +813,7 @@ db.roles_Api.insertMany([
 ]);
 
 use("Campus_incidents");
-db.user_Api.insertMany([
+db.User_Api.insertMany([
     {
       "name": "Juan",
       "email": "juanjoseduranrincon404@gmail.com",
@@ -833,9 +833,9 @@ db.user_Api.insertMany([
 ]);
   
 
-//🚧🧧Creacion de la coleccion passwordCode🧧🚧
+//🚧🧧Creacion de la coleccion PasswordCode 🧧🚧
 use("Campus_incidents");
-db.createCollection("passwordCode", {
+db.createCollection("PasswordCode", {
     validator: {
         $jsonSchema: {
            bsonType: "object",
@@ -886,6 +886,6 @@ db.createCollection("passwordCode", {
 });
 
 use("Campus_incidents");
-db.passwordCode.createIndex({ name: 1 }, { unique: true });
-db.passwordCode.createIndex({ email: 1 }, { unique: true });
-db.passwordCode.createIndex({ createdAt: 1 }, { expireAfterSeconds: 900 })
+db.PasswordCode.createIndex({ name: 1 }, { unique: true });
+db.PasswordCode.createIndex({ email: 1 }, { unique: true });
+db.PasswordCode.createIndex({ createdAt: 1 }, { expireAfterSeconds: 900 })
