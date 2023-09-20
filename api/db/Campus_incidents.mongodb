@@ -1,0 +1,891 @@
+//🪙MongoDB Database Construction🪙
+
+use("Campus_incidents");
+
+//🚧⛩️ Creation of the Area collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Area", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "A_Name", "A_Description" ],
+            title: "Area Validation",
+            properties: {
+                _id: {
+                    bsonType: "number",
+                    description: "'_id' must be a positive number",
+                    minimum: 0
+                },
+                A_Name: {
+                    bsonType: "string",
+                    description: "'A_Name' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 45
+                },
+                A_Description: {
+                    bsonType: "string",
+                    description: "'A_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+use("Campus_incidents");
+db.Area.createIndex({ A_Name: 1 }, { unique: true });
+
+//🚧⛩️ Creation of the Classroom collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Classroom", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Sln_Name", "Sln_Description", "Sln_Areas", "Sln_Pcs" ],
+            title: "Classroom Validation",
+            properties: {
+                _id: {
+                    bsonType: "number",
+                    description: "'_id' must be a positive number",
+                    minimum: 0
+                },
+                Sln_Name: {
+                    bsonType: "string",
+                    description: "'A_Name' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 45
+                },
+                Sln_Description: {
+                    bsonType: "string",
+                    description: "'A_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                },
+                Sln_Areas: {
+                    bsonType: "number",
+                    description: "'Sln_Areas' must be a positive number",
+                    minimum: 0
+                },
+                Sln_Pcs: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "number",
+                        minimum: 0
+                    },
+                    description: "'Sln_Pcs' must be an array with postival numbers"
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+use("Campus_incidents");
+db.Classroom.createIndex({ Sln_Name: 1 }, { unique: true });
+
+//🚧⛩️ Creation of the Category_Inc collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Category_Inc", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Cat_Name", "Cat_Description" ],
+            title: "Category_Inc Validation",
+            properties: {
+                _id: {
+                    bsonType: "number",
+                    description: "'_id' must be a positive number",
+                    minimum: 0
+                },
+                Cat_Name: {
+                    bsonType: "string",
+                    description: "'Cat_Name' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 45
+                },
+                Cat_Description: {
+                    bsonType: "string",
+                    description: "'Cat_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+use("Campus_incidents");
+db.Category_Inc.createIndex({ Cat_Name: 1 }, { unique: true });
+
+//🚧⛩️ Creation of the Type_Inc collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Type_Inc", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Typ_Name", "Typ_Description" ],
+            title: "Type_Inc Validation",
+            properties: {
+                _id: {
+                    bsonType: "number",
+                    description: "'_id' must be a positive number",
+                    minimum: 0
+                },
+                Typ_Name: {
+                    bsonType: "string",
+                    description: "'Typ_Name' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 45
+                },
+                Typ_Description: {
+                    bsonType: "string",
+                    description: "'Typ_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+use("Campus_incidents");
+db.Type_Inc.createIndex({ Typ_Name: 1 }, { unique: true });
+
+//🚧⛩️ Creation of the Priority_Inc collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Priority_Inc", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Pry_Name", "Pry_Description" ],
+            title: "Priority_Inc Validation",
+            properties: {
+                _id: {
+                    bsonType: "number",
+                    description: "'_id' must be a positive number",
+                    minimum: 0
+                },
+                Pry_Name: {
+                    bsonType: "string",
+                    description: "'Pry_Name' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 45
+                },
+                Pry_Description: {
+                    bsonType: "string",
+                    description: "'Pry_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+use("Campus_incidents");
+db.Priority_Inc.createIndex({ Pry_Name: 1 }, { unique: true });
+
+//🚧⛩️ Creation of the document_type collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("document_type", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Doc_Name", "Doc_Abbreviation" ],
+            title: "document_type Validation",
+            properties: {
+                _id: {
+                    bsonType: "number",
+                    description: "'_id' must be a positive number",
+                    minimum: 0
+                },
+                Doc_Name: {
+                    bsonType: "string",
+                    description: "'Doc_Name' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 45
+                },
+                Doc_Abbreviation: {
+                    bsonType: "string",
+                    description: "'Doc_Abbreviation' must contain letters but no special characters or numbers.",  
+                    pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
+                    maxLength: 10
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+use("Campus_incidents");
+db.document_type.createIndex({ Doc_Name: 1 }, { unique: true });
+
+//🚧⛩️ Creation of the gender collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("gender", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Gen_Name", "Gen_Abbreviation" ],
+            title: "gender Validation",
+            properties: {
+                _id: {
+                    bsonType: "number",
+                    description: "'_id' must be a positive number",
+                    minimum: 0
+                },
+                Gen_Name: {
+                    bsonType: "string",
+                    description: "'Gen_Name' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 45
+                },
+                Gen_Abbreviation: {
+                    bsonType: "string",
+                    description: "'Gen_Abbreviation' must contain letters but no special characters or numbers.",  
+                    pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
+                    maxLength: 10
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+use("Campus_incidents");
+db.gender.createIndex({ Gen_Name: 1 }, { unique: true });
+
+//🚧⛩️ Creation of the Comp_Status collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Comp_Status", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Est_Name", "Est_Description" ],
+            title: "Comp_Status Validation",
+            properties: {
+                _id: {
+                    bsonType: "number",
+                    description: "'_id' must be a positive number",
+                    minimum: 0
+                },
+                Est_Name: {
+                    bsonType: "string",
+                    description: "'Est_Name' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 45
+                },
+                Est_Description: {
+                    bsonType: "string",
+                    description: "'Est_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+use("Campus_incidents");
+db.Comp_Status.createIndex({ Est_Name: 1 }, { unique: true });
+
+//🚧⛩️ Creation of the user collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("user", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Name", "Document_type", "Identity_card", "Age", "Email", "Password", "Rol", "Cellphone", "Gender"],
+            title: "user Validation",
+            properties: {
+                _id: {
+                    bsonType: "number",
+                    description: "'_id' must be a positive number",
+                    minimum: 0
+                },
+                Name: {
+                    bsonType: "string",
+                    description: "'Name' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 45
+                },
+                Document_type: {
+                    bsonType: "number",
+                    description: "'Document_type' must be a positive number",
+                    minimum: 0
+                },
+                Identity_card: {
+                    bsonType: "number",
+                    description: "'Identity_card' must be a positive number",
+                    minimum: 0
+                },
+                Age: {
+                    bsonType: "number",
+                    description: "'Age' must be a positive number",
+                    minimum: 0,
+                    maximum:100
+                },
+                Email: { 
+                    bsonType: "string" , 
+                    pattern : "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+                    description: "'Email' must be an email of less than 255 characters",
+                    maxLength: 255
+                },
+                Password: { 
+                    bsonType: "string" , 
+                    description: "'Password' must be of type string.",
+                    maxLength: 255
+                },
+                Rol: {
+                    bsonType: "number",
+                    description: "'Rol' must be a positive number",
+                    minimum: 0
+                },
+                Cellphone: {
+                    bsonType: "number",
+                    description: "'Cellphone' must be a positive number",
+                    minimum: 0
+                },
+                Gender: {
+                    bsonType: "number",
+                    description: "'Gender' must be a positive number",
+                    minimum: 0
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+use("Campus_incidents");
+db.user.createIndex({ Name: 1 }, { unique: true });
+db.user.createIndex({ Identity_card: 1 }, { unique: true });
+db.user.createIndex({ Email: 1 }, { unique: true });
+
+//🚧⛩️ Creation of the Computers collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Computers", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Cp_Brand", "Cp_Status", "Cp_Description", "Cp_Classroom "],
+            title: "Computers Validation",
+            properties: {
+                _id: {
+                    bsonType: "string",
+                    description: "'_id' must start with 'CP-' followed by numbers.",
+                    pattern: "^CP-[0-9]+$",
+                    maxLength: 10
+                },
+                Cp_Brand: {
+                    bsonType: "string",
+                    description: "'Cp_Brand' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 40
+                },
+                Cp_Status: {
+                    bsonType: "number",
+                    description: "'Cp_Status' must be a positive number",
+                    minimum: 0
+                },
+                Cp_Description: {
+                    bsonType: "string",
+                    description: "'Cp_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                },
+                Cp_Classroom: {
+                    bsonType: "number",
+                    description: "'Cp_Classroom' must be a positive number",
+                    minimum: 0
+                },
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+//🚧⛩️ Creation of the Keyboards collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Keyboards", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Tc_Brand", "Tc_Status", "Tc_Description", "Tc_PC "],
+            title: "Keyboards Validation",
+            properties: {
+                _id: {
+                    bsonType: "string",
+                    description: "'_id' must start with 'TC-' followed by numbers.",
+                    pattern: "^TC-[0-9]+$",
+                    maxLength: 10
+                },
+                Tc_Brand: {
+                    bsonType: "string",
+                    description: "'Tc_Brand' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 40
+                },
+                Tc_Status: {
+                    bsonType: "number",
+                    description: "'Tc_Status' must be a positive number",
+                    minimum: 0
+                },
+                Tc_Description: {
+                    bsonType: "string",
+                    description: "'Tc_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                },
+                Tc_PC: {
+                    bsonType: "string",
+                    description: "'Tc_PC' must start with 'CP-' followed by numbers.",
+                    pattern: "^CP-[0-9]+$",
+                    maxLength: 10
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+//🚧⛩️ Creation of the Mouses collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Mouses", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Mo_Brand", "Mo_Status", "Mo_Description", "Mo_PC "],
+            title: "Mouses Validation",
+            properties: {
+                _id: {
+                    bsonType: "string",
+                    description: "'_id' must start with 'Mo-' followed by numbers.",
+                    pattern: "^Mo-[0-9]+$",
+                    maxLength: 10
+                },
+                Mo_Brand: {
+                    bsonType: "string",
+                    description: "'Mo_Brand' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 40
+                },
+                Mo_Status: {
+                    bsonType: "number",
+                    description: "'Mo_Status' must be a positive number",
+                    minimum: 0
+                },
+                Mo_Description: {
+                    bsonType: "string",
+                    description: "'Mo_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                },
+                Mo_PC: {
+                    bsonType: "string",
+                    description: "'Mo_PC' must start with 'CP-' followed by numbers.",
+                    pattern: "^CP-[0-9]+$",
+                    maxLength: 10
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+//🚧⛩️ Creation of the Diadems_Gamers collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Diadems_Gamers", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Dg_Brand", "Dg_Status", "Dg_Description", "Dg_PC "],
+            title: "Diadems_Gamers Validation",
+            properties: {
+                _id: {
+                    bsonType: "string",
+                    description: "'_id' must start with 'Dg-' followed by numbers.",
+                    pattern: "^Dg-[0-9]+$",
+                    maxLength: 10
+                },
+                Dg_Brand: {
+                    bsonType: "string",
+                    description: "'Dg_Brand' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 40
+                },
+                Dg_Status: {
+                    bsonType: "number",
+                    description: "'Dg_Status' must be a positive number",
+                    minimum: 0
+                },
+                Dg_Description: {
+                    bsonType: "string",
+                    description: "'Dg_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                },
+                Dg_PC: {
+                    bsonType: "string",
+                    description: "'Dg_PC' must start with 'CP-' followed by numbers.",
+                    pattern: "^CP-[0-9]+$",
+                    maxLength: 10
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+//🚧⛩️ Creation of the Diadems_Gamers collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Screens", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Pt_Brand", "Pt_Status", "Pt_Description", "Pt_PC "],
+            title: "Screens Validation",
+            properties: {
+                _id: {
+                    bsonType: "string",
+                    description: "'_id' must start with 'Pt-' followed by numbers.",
+                    pattern: "^Pt-[0-9]+$",
+                    maxLength: 10
+                },
+                Pt_Brand: {
+                    bsonType: "string",
+                    description: "'Pt_Brand' must contain letters and numbers but no special characters.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    maxLength: 40
+                },
+                Pt_Status: {
+                    bsonType: "number",
+                    description: "'Pt_Status' must be a positive number",
+                    minimum: 0
+                },
+                Pt_Description: {
+                    bsonType: "string",
+                    description: "'Pt_Description' must contain letters and numbers but no special characters.",  
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    maxLength: 250
+                },
+                Pt_PC: {
+                    bsonType: "string",
+                    description: "'Pt_PC' must start with 'CP-' followed by numbers.",
+                    pattern: "^CP-[0-9]+$",
+                    maxLength: 10
+                }
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
+
+
+//🕵️Cconstruction Validations and Users🕵️
+
+//🚧👩‍💻 Creation of the Diadems_Gamers collection 👩‍💻🚧
+
+use("Campus_incidents");
+db.createCollection("user_Api", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ 
+                "_id",
+                "name",
+                "email",
+                "password",
+                "versions",
+                "code_Rol",
+                "authorization"
+            ],
+           title: "user_Api Validation",
+           properties: {
+                 _id: { 
+                    bsonType: "objectId" , 
+                    description: "'_id' must be a valid ObjectId"
+                },
+
+                name: { 
+                    bsonType: "string" , 
+                    description: "'name' must be of type string with letters and numbers.",
+                    pattern: "^[a-zA-Z0-9 ]+$",
+                    maxLength: 255
+                },
+
+                email: { 
+                    bsonType: "string" , 
+                    pattern : "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+                    description: "'email' must be an email of less than 255 characters",
+                    maxLength: 255
+                },
+
+                password: { 
+                    bsonType: "string" , 
+                    description: "'password' must be of type string.",
+                    maxLength: 255
+                },
+
+                versions: {
+                  bsonType: "array", 
+                  description: "'versions' must be an array",
+                  items: {
+                      bsonType: "string"
+                  }
+                },
+                code_Rol: { 
+                    bsonType: "string" , 
+                    description: "'code_Rol' must be a valid code",
+                    pattern: "^(CsWscEhspi6896|CsWscGexsiv6578|CsWscXvepmrk0769)$"
+                },
+                authorization: {
+                    bsonType: "bool",
+                    description: "'authorization' must be true or false"
+                }
+           },
+           additionalProperties: false
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict"
+});
+//indices para evitar usuarios y correos repetidos.
+use("Campus_incidents");
+db.user_Api.createIndex({ name: 1 }, { unique: true });
+db.user_Api.createIndex({ email: 1 }, { unique: true });
+
+//🚧🔎Creacion de la coleccion roles_Api🔎🚧
+
+use("Campus_incidents");
+db.createCollection("roles_Api", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ 
+                "_id",
+                "rol",
+                "access"
+            ],
+           title: "roles_Api Validation",
+           properties: {
+                _id: { 
+                    bsonType: "string" , 
+                    description: "'_id' must be of type string",
+                    pattern: "^(CsWscEhspi6896|CsWscGexsiv6578|CsWscXvepmrk0769)$"
+                },
+
+                rol: { 
+                    bsonType: "string" , 
+                    description: "'rol' must be of type string with letters and numbers.",
+                    pattern: "^[a-zA-Z0-9 ]+$",
+                    maxLength: 20
+                },
+
+                access: { 
+                    bsonType: "string" , 
+                    description: "'access' must be of type string with letters and numbers.",
+                    pattern: "^[a-zA-Z0-9 ]+$",
+                    maxLength: 200
+                }
+           },
+           additionalProperties: false
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
+
+// "YoSoyCamper2134" cifrado con un desplazamiento de 4:
+// Texto cifrado: "CsWscGexsiv6578"
+
+// "YoSoyAdmin2452" cifrado con un desplazamiento de 4:
+// Texto cifrado: "CsWscEhspi6896"
+
+// "YoSoyTrainer6325" cifrado con un desplazamiento de 4:
+// Texto cifrado: "CsWscXvepmrk0769"
+
+//🚧🎫Creacion de la coleccion tokens_Api🎫🚧
+
+use("Campus_incidents");
+db.createCollection("tokens_Api", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ 
+                "_id",
+                "id_usuario_Api",
+                "token"
+            ],
+           title: "tokens_Api Validation",
+           properties: {
+                _id: { 
+                    bsonType: "objectId" , 
+                    description: "'_id' must be a valid ObjectId"
+                },
+
+                id_usuario_Api: { 
+                    bsonType: "objectId" , 
+                    description: "'id_usuario_Api' must be a valid ObjectId"
+                },
+
+                token: { 
+                    bsonType: "string" , 
+                    description: "'token' must be of type string.",
+                }
+           },
+           additionalProperties: false
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
+
+
+//🪓🔎Inyeccion de documentos para la coleccion Roles_Api🔎🪓
+
+use("Campus_incidents");
+db.roles_Api.insertMany([
+    {
+      "_id": "CsWscEhspi6896",
+      "rol": "Admin",
+      "access": "Full access to crud and special methods of all collections requested by the admin"
+    },
+    {
+      "_id": "CsWscGexsiv6578",
+      "rol": "Camper",
+      "access": "Access to crud methods of all collections requested by the camper"
+    },
+    {
+      "_id": "CsWscXvepmrk0769",
+      "rol": "Trainer",
+      "access": "Access to crud methods and special trainer methods of all collections requested by the Trainer"
+    }
+]);
+
+use("Campus_incidents");
+db.user_Api.insertMany([
+    {
+      "name": "Juan",
+      "email": "juanjoseduranrincon404@gmail.com",
+      "password": "Monochrome",
+      "versions" : ["1.0.1", "1.1.0"],
+      "code_Rol": "CsWscGexsiv6578",
+      "authorization": true
+    },
+    {
+      "name": "Silver", 
+      "email": "prueba1@gmail.com",
+      "password": "1234",
+      "versions" : ["1.0.0", "1.1.0"],
+      "code_Rol": "CsWscEhspi6896",
+      "authorization": true
+    }
+]);
+  
+
+//🚧🧧Creacion de la coleccion passwordCode🧧🚧
+use("Campus_incidents");
+db.createCollection("passwordCode", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ 
+                "_id",
+                "name",
+                "email",
+                "createdAt",
+                "recovery_Code"
+            ],
+           title: "passwordCode Validation",
+           properties: {
+                _id: { 
+                    bsonType: "objectId" , 
+                    description: "'_id' must be a valid ObjectId"
+                },
+
+                name: { 
+                    bsonType: "string" , 
+                    description: "'name' must be of type string with letters and numbers.",
+                    pattern: "^[a-zA-Z0-9 ]+$",
+                    maxLength: 255
+                },
+
+                email: { 
+                    bsonType: "string" , 
+                    pattern : "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+                    description: "'email' must be an email of less than 255 characters",
+                    maxLength: 255
+                },
+
+                createdAt: {
+                    bsonType: "date",
+                    description: "'createdAt' must be an Date",
+                },
+
+                recovery_Code: { 
+                    bsonType: "string" , 
+                    description: "'recovery_Code' must be of type string of less than 5 characters",
+                    maxLength: 5
+                }
+           },
+           additionalProperties: false
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict"
+});
+
+use("Campus_incidents");
+db.passwordCode.createIndex({ name: 1 }, { unique: true });
+db.passwordCode.createIndex({ email: 1 }, { unique: true });
+db.passwordCode.createIndex({ createdAt: 1 }, { expireAfterSeconds: 900 })
