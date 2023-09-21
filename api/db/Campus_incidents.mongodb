@@ -419,9 +419,10 @@ db.createCollection("Incidents", {
                     minimum: 0
                 },
                 Inc_Status: {
-                    bsonType: "bool",
-                    description: "'Inc_Status' must be a boolean value",
-                    minimum: 0
+                    bsonType: "string",
+                    description: "'Inc_Status' must contain letters and numbers but no special characters.",  
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
+                    maxLength: 20
                 },
             },
             additionalProperties: false
@@ -438,7 +439,7 @@ db.createCollection("Computers", {
     validator: {
        $jsonSchema: {
             bsonType: "object",
-            required: [ "_id", "Cp_Brand", "Cp_Status", "Cp_Description", "Cp_Classroom "],
+            required: [ "_id", "Cp_Brand", "Cp_Status", "Cp_Description", "Cp_Classroom"],
             title: "Computers Validation",
             properties: {
                 _id: {
@@ -484,7 +485,7 @@ db.createCollection("Keyboards", {
     validator: {
        $jsonSchema: {
             bsonType: "object",
-            required: [ "_id", "Tc_Brand", "Tc_Status", "Tc_Description", "Tc_PC "],
+            required: [ "_id", "Tc_Brand", "Tc_Status", "Tc_Description", "Tc_PC"],
             title: "Keyboards Validation",
             properties: {
                 _id: {
@@ -531,7 +532,7 @@ db.createCollection("Mouses", {
     validator: {
        $jsonSchema: {
             bsonType: "object",
-            required: [ "_id", "Mo_Brand", "Mo_Status", "Mo_Description", "Mo_PC "],
+            required: [ "_id", "Mo_Brand", "Mo_Status", "Mo_Description", "Mo_PC"],
             title: "Mouses Validation",
             properties: {
                 _id: {
@@ -578,7 +579,7 @@ db.createCollection("Diadems_Gamers", {
     validator: {
        $jsonSchema: {
             bsonType: "object",
-            required: [ "_id", "Dg_Brand", "Dg_Status", "Dg_Description", "Dg_PC "],
+            required: [ "_id", "Dg_Brand", "Dg_Status", "Dg_Description", "Dg_PC"],
             title: "Diadems_Gamers Validation",
             properties: {
                 _id: {
@@ -625,7 +626,7 @@ db.createCollection("Screens", {
     validator: {
        $jsonSchema: {
             bsonType: "object",
-            required: [ "_id", "Pt_Brand", "Pt_Status", "Pt_Description", "Pt_PC "],
+            required: [ "_id", "Pt_Brand", "Pt_Status", "Pt_Description", "Pt_PC"],
             title: "Screens Validation",
             properties: {
                 _id: {
