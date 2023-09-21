@@ -20,13 +20,13 @@ db.createCollection("Area", {
                 A_Name: {
                     bsonType: "string",
                     description: "'A_Name' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 45
                 },
                 A_Description: {
                     bsonType: "string",
                     description: "'A_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 250
                 }
             },
@@ -58,13 +58,13 @@ db.createCollection("Classroom", {
                 Sln_Name: {
                     bsonType: "string",
                     description: "'A_Name' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 45
                 },
                 Sln_Description: {
                     bsonType: "string",
                     description: "'A_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 250
                 },
                 Sln_Areas: {
@@ -73,9 +73,10 @@ db.createCollection("Classroom", {
                     minimum: 0
                 },
                 Sln_Pcs: {
-                    bsonType: "array",
+                    bsonType: ["array", "null"],
                     items: {
                         bsonType: "number",
+                        description: "'Sln_Pcs' must be a positive number",
                         minimum: 0
                     },
                     description: "'Sln_Pcs' must be an array with postival numbers"
@@ -109,13 +110,13 @@ db.createCollection("Category_Inc", {
                 Cat_Name: {
                     bsonType: "string",
                     description: "'Cat_Name' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 45
                 },
                 Cat_Description: {
                     bsonType: "string",
                     description: "'Cat_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 250
                 }
             },
@@ -147,13 +148,13 @@ db.createCollection("Type_Inc", {
                 Typ_Name: {
                     bsonType: "string",
                     description: "'Typ_Name' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 45
                 },
                 Typ_Description: {
                     bsonType: "string",
                     description: "'Typ_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 250
                 }
             },
@@ -166,44 +167,6 @@ db.createCollection("Type_Inc", {
 
 use("Campus_incidents");
 db.Type_Inc.createIndex({ Typ_Name: 1 }, { unique: true });
-
-//🚧⛩️ Creation of the Priority_Inc collection ⛩️🚧
-
-use("Campus_incidents");
-db.createCollection("Priority_Inc", {
-    validator: {
-       $jsonSchema: {
-            bsonType: "object",
-            required: [ "_id", "Pry_Name", "Pry_Description" ],
-            title: "Priority_Inc Validation",
-            properties: {
-                _id: {
-                    bsonType: "number",
-                    description: "'_id' must be a positive number",
-                    minimum: 0
-                },
-                Pry_Name: {
-                    bsonType: "string",
-                    description: "'Pry_Name' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
-                    maxLength: 45
-                },
-                Pry_Description: {
-                    bsonType: "string",
-                    description: "'Pry_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
-                    maxLength: 250
-                }
-            },
-            additionalProperties: false
-         }
-     },
-     validationAction: "error",
-     validationLevel: "strict"
-});
-
-use("Campus_incidents");
-db.Priority_Inc.createIndex({ Pry_Name: 1 }, { unique: true });
 
 //🚧⛩️ Creation of the document_type collection ⛩️🚧
 
@@ -223,13 +186,13 @@ db.createCollection("Document_type", {
                 Doc_Name: {
                     bsonType: "string",
                     description: "'Doc_Name' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 45
                 },
                 Doc_Abbreviation: {
                     bsonType: "string",
                     description: "'Doc_Abbreviation' must contain letters but no special characters or numbers.",  
-                    pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 10
                 }
             },
@@ -261,13 +224,13 @@ db.createCollection("Gender", {
                 Gen_Name: {
                     bsonType: "string",
                     description: "'Gen_Name' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 45
                 },
                 Gen_Abbreviation: {
                     bsonType: "string",
                     description: "'Gen_Abbreviation' must contain letters but no special characters or numbers.",  
-                    pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 10
                 }
             },
@@ -299,13 +262,13 @@ db.createCollection("Comp_Status", {
                 Est_Name: {
                     bsonType: "string",
                     description: "'Est_Name' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 45
                 },
                 Est_Description: {
                     bsonType: "string",
                     description: "'Est_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 250
                 }
             },
@@ -337,7 +300,7 @@ db.createCollection("User", {
                 Name: {
                     bsonType: "string",
                     description: "'Name' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 45
                 },
                 Document_type: {
@@ -368,9 +331,13 @@ db.createCollection("User", {
                     maxLength: 255
                 },
                 Rol: {
-                    bsonType: "number",
-                    description: "'Rol' must be a positive number",
-                    minimum: 0
+                    bsonType: "array", 
+                    description: "'Rol' must be an array",
+                    items: {
+                        bsonType: "string" , 
+                        description: "'Rol' must be a valid code",
+                        pattern: "^(CsWscEhspi6896|CsWscGexsiv6578|CsWscXvepmrk0769|YsWscQ1t3735|YsWscQ2v9865|YsWscQ3z9dc3|YsWscN1t0141|YsWscN2v3265|YsWscN3z7he8|YsWscR1x6891|YsWscR2x02a2)$"
+                    }
                 },
                 Cellphone: {
                     bsonType: "number",
@@ -395,6 +362,84 @@ db.User.createIndex({ Name: 1 }, { unique: true });
 db.User.createIndex({ Identity_card: 1 }, { unique: true });
 db.User.createIndex({ Email: 1 }, { unique: true });
 
+//🚧⛩️ Creation of the user collection ⛩️🚧
+
+use("Campus_incidents");
+db.createCollection("Incidents", {
+    validator: {
+       $jsonSchema: {
+            bsonType: "object",
+            required: [ "_id", "Inc_Category", "Inc_Type", "Inc_Description", "Inc_Creation_Date", "Inc_Solution_Date", "Inc_Desc_Solution", "Inc_Area", "Inc_Classroom", "Inc_User", "Inc_PC", "Inc_Status"],
+            title: "Incidents Validation",
+            properties: {
+                _id: {
+                    bsonType: "number",
+                    description: "'_id' must be a positive number",
+                    minimum: 0
+                },
+                Inc_Category: {
+                    bsonType: "number",
+                    description: "'Inc_Category' must be a positive number",
+                    minimum: 0
+                },
+                Inc_Type: {
+                    bsonType: "number",
+                    description: "'Inc_Type' must be a positive number",
+                    minimum: 0
+                },
+                Inc_Description: {
+                    bsonType: "string",
+                    description: "'Est_Description' must contain letters and numbers but no special characters.",  
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
+                    maxLength: 250
+                },
+                Inc_Creation_Date: {
+                    bsonType: "date",
+                    description: "'Inc_Creation_Date' must be an Date",
+                },
+                Inc_Solution_Date: {
+                    bsonType: "date",
+                    description: "'Inc_Solution_Date' must be an Date",
+                },
+                Inc_Desc_Solution: {
+                    bsonType: "string",
+                    description: "'Inc_Desc_Solution' must contain letters and numbers but no special characters.",  
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
+                    maxLength: 250
+                },
+                Inc_Area: {
+                    bsonType: "number",
+                    description: "'Inc_Area' must be a positive number",
+                    minimum: 0
+                },
+                Inc_Classroom: {
+                    bsonType: "number",
+                    description: "'Inc_Classroom' must be a positive number",
+                    minimum: 0
+                },
+                Inc_User: {
+                    bsonType: "number",
+                    description: "'Inc_User' must be a positive number",
+                    minimum: 0
+                },
+                Inc_PC: {
+                    bsonType: ["number", "null"],
+                    description: "'Inc_PC' must be a positive number",
+                    minimum: 0
+                },
+                Inc_Status: {
+                    bsonType: "bool",
+                    description: "'Inc_Status' must be a boolean value",
+                    minimum: 0
+                },
+            },
+            additionalProperties: false
+         }
+     },
+     validationAction: "error",
+     validationLevel: "strict"
+});
+
 //🚧⛩️ Creation of the Computers collection ⛩️🚧
 
 use("Campus_incidents");
@@ -414,7 +459,7 @@ db.createCollection("Computers", {
                 Cp_Brand: {
                     bsonType: "string",
                     description: "'Cp_Brand' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 40
                 },
                 Cp_Status: {
@@ -425,7 +470,7 @@ db.createCollection("Computers", {
                 Cp_Description: {
                     bsonType: "string",
                     description: "'Cp_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 250
                 },
                 Cp_Classroom: {
@@ -460,7 +505,7 @@ db.createCollection("Keyboards", {
                 Tc_Brand: {
                     bsonType: "string",
                     description: "'Tc_Brand' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 40
                 },
                 Tc_Status: {
@@ -471,7 +516,7 @@ db.createCollection("Keyboards", {
                 Tc_Description: {
                     bsonType: "string",
                     description: "'Tc_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 250
                 },
                 Tc_PC: {
@@ -507,7 +552,7 @@ db.createCollection("Mouses", {
                 Mo_Brand: {
                     bsonType: "string",
                     description: "'Mo_Brand' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 40
                 },
                 Mo_Status: {
@@ -518,7 +563,7 @@ db.createCollection("Mouses", {
                 Mo_Description: {
                     bsonType: "string",
                     description: "'Mo_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 250
                 },
                 Mo_PC: {
@@ -554,7 +599,7 @@ db.createCollection("Diadems_Gamers", {
                 Dg_Brand: {
                     bsonType: "string",
                     description: "'Dg_Brand' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 40
                 },
                 Dg_Status: {
@@ -565,7 +610,7 @@ db.createCollection("Diadems_Gamers", {
                 Dg_Description: {
                     bsonType: "string",
                     description: "'Dg_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 250
                 },
                 Dg_PC: {
@@ -601,7 +646,7 @@ db.createCollection("Screens", {
                 Pt_Brand: {
                     bsonType: "string",
                     description: "'Pt_Brand' must contain letters and numbers but no special characters.",
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
                     maxLength: 40
                 },
                 Pt_Status: {
@@ -612,7 +657,7 @@ db.createCollection("Screens", {
                 Pt_Description: {
                     bsonType: "string",
                     description: "'Pt_Description' must contain letters and numbers but no special characters.",  
-                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s]+$",
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
                     maxLength: 250
                 },
                 Pt_PC: {
@@ -683,10 +728,14 @@ db.createCollection("User_Api", {
                       bsonType: "string"
                   }
                 },
-                code_Rol: { 
-                    bsonType: "string" , 
-                    description: "'code_Rol' must be a valid code",
-                    pattern: "^(CsWscEhspi6896|CsWscGexsiv6578|CsWscXvepmrk0769)$"
+                code_Rol: {
+                    bsonType: "array", 
+                    description: "'code_Rol' must be an array",
+                    items: {
+                        bsonType: "string" , 
+                        description: "'code_Rol' must be a valid code",
+                        pattern: "^(CsWscEhspi6896|CsWscGexsiv6578|CsWscXvepmrk0769|YsWscQ1t3735|YsWscQ2v9865|YsWscQ3z9dc3|YsWscN1t0141|YsWscN2v3265|YsWscN3z7he8|YsWscR1x6891|YsWscR2x02a2)$"
+                    }
                 },
                 authorization: {
                     bsonType: "bool",
@@ -721,7 +770,7 @@ db.createCollection("Roles_Api", {
                 _id: { 
                     bsonType: "string" , 
                     description: "'_id' must be of type string",
-                    pattern: "^(CsWscEhspi6896|CsWscGexsiv6578|CsWscXvepmrk0769)$"
+                    pattern: "^(CsWscEhspi6896|CsWscGexsiv6578|CsWscXvepmrk0769|YsWscQ1t3735|YsWscQ2v9865|YsWscQ3z9dc3|YsWscN1t0141|YsWscN2v3265|YsWscN3z7he8|YsWscR1x6891|YsWscR2x02a2)$"
                 },
 
                 rol: { 
@@ -753,6 +802,15 @@ db.createCollection("Roles_Api", {
 
 // "YoSoyTrainer6325" encrypted with an offset of 4:
 // Encrypted text: "CsWscXvepmrk0769"
+
+// "YoSoyM1x7235" becomes "YsWscQ1t3735".
+// "YoSoyM2x5421" becomes "YsWscQ2v9865".
+// "YoSoyM3x5489" becomes "YsWscQ3z9dc3"
+// "YoSoyJ1x4785" becomes "YsWscN1t0141"
+// "ISoyJ2x4851" becomes "YsWscN2v3265"
+// "YoSoyJ3x4154" becomes "YsWscN3z7he8"
+// "YoSoyV1x2457" becomes "YsWscR1x6891"
+// "YoSoyV2x9658" becomes "YsWscR2x02a2"
 
 //🚧🎫 Creation of the Tokens_Api collection 🎫🚧
 
@@ -819,7 +877,7 @@ db.User_Api.insertMany([
       "email": "juanjoseduranrincon404@gmail.com",
       "password": "Monochrome",
       "versions" : ["1.0.1", "1.1.0"],
-      "code_Rol": "CsWscGexsiv6578",
+      "code_Rol": ["CsWscGexsiv6578", "YsWscQ1t3735"],
       "authorization": true
     },
     {
@@ -827,7 +885,7 @@ db.User_Api.insertMany([
       "email": "prueba1@gmail.com",
       "password": "1234",
       "versions" : ["1.0.0", "1.1.0"],
-      "code_Rol": "CsWscEhspi6896",
+      "code_Rol": ["CsWscXvepmrk0769"],
       "authorization": true
     }
 ]);
