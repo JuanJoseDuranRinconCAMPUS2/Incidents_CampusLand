@@ -1,0 +1,247 @@
+//}🚧🔗 Creation of the autoincrementables management collection 🔗🚧
+
+use("Campus_incidents");
+db.createCollection("autoincrement");
+db.autoincrement.insertMany([
+    { _id: "AreaId", sequence_value: 0 },
+    { _id: "ClassroomId", sequence_value: 0 },
+    { _id: "Category_IncId", sequence_value: 0 },
+    { _id: "Type_IncId", sequence_value: 0 },
+    { _id: "Document_typeId", sequence_value: 0 },
+    { _id: "GenderId", sequence_value: 0 },
+    { _id: "Comp_StatusId", sequence_value: 0 },
+    { _id: "IncidentsId", sequence_value: 0 },
+    { _id: "UserId", sequence_value: 0 },
+    { _id: "ComputersId", sequence_value: 0 },
+    { _id: "KeyboardsId", sequence_value: 0 },
+    { _id: "MousesId", sequence_value: 0 },
+    { _id: "Diadems_GamersId", sequence_value: 0 },
+    { _id: "ScreensId", sequence_value: 0 }
+]);
+
+//🪓🔎Injection of documents for Area collection 🔎🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+db.Area.insertMany([
+    {
+      _id: Number(increment("Area")),
+      A_Name: "Area Training",
+      A_Description: "Programming skills training area, in which the Apollo, Artemis, spunikt and SkyLab classrooms are located."
+    },
+    {
+        _id: Number(increment("Area")),
+        A_Name: "Area Review 1",
+        A_Description: "First autonomous learning area, in which the Corvus room is located."
+    },
+    {
+        _id: Number(increment("Area")),
+        A_Name: "Area Review 2",
+        A_Description: "Second autonomous learning area, in which the Endor room is located."
+    },
+    {
+        _id: Number(increment("Area")),
+        A_Name: "Auditorium",
+        A_Description: "auditorium, used for events and also used for English and social skills classes."
+    }
+]);
+
+//🪓🔎Injection of documents for Category_Inc collection 🔎🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}   
+db.Category_Inc.insertMany([
+    {
+        _id: Number(increment("Category_Inc")),
+        Cat_Name: "Critical",
+        Cat_Description: "Refers to high level incidents."
+    },
+    {
+        _id: Number(increment("Category_Inc")),
+        Cat_Name: "Moderate",
+        Cat_Description: "Refers to low intermediate level incidents."
+    },
+    {
+        _id: Number(increment("Category_Inc")),
+        Cat_Name: "Slight",
+        Cat_Description: "Refers to low level incidents."
+    }
+]);
+
+//🪓🔎Injection of documents for Type_Inc collection 🔎🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}   
+db.Type_Inc.insertMany([
+    {
+        _id: Number(increment("Type_Inc")),
+        Typ_Name: "Software",
+        Typ_Description: "Refers to incidents related to the software of the computers located in the classrooms."
+    },
+    {
+        _id: Number(increment("Type_Inc")),
+        Typ_Name: "Hardware",
+        Typ_Description: "Refers to incidents related to the computers located in the classrooms."
+    },
+    {
+        _id: Number(increment("Type_Inc")),
+        Typ_Name: "Furniture",
+        Typ_Description: "Refers to incidents related to furniture or elements inside the classrooms."
+    },
+    {
+        _id: Number(increment("Type_Inc")),
+        Typ_Name: "Infrastructure",
+        Typ_Description: "Refers to incidents related to the infrastructure of the classrooms."
+    }
+]);
+
+//🪓🔎Injection of documents for Comp_Status collection 🔎🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}   
+db.Comp_Status.insertMany([
+    {
+        _id: Number(increment("Comp_Status")),
+        Est_Name: "Damaged",
+        Est_Description: "Refers to computers or peripherals that have any damage."
+    },
+    {
+        _id: Number(increment("Comp_Status")),
+        Est_Name: "Operative",
+        Est_Description: "Refers to computers or peripherals that are currently operational and have no problems."
+    },
+    {
+        _id: Number(increment("Comp_Status")),
+        Est_Name: "Under maintenance",
+        Est_Description: "Refers to computers or peripherals that are being checked and fixed."
+    },
+    {
+        _id: Number(increment("Comp_Status")),
+        Est_Name: "Out of service",
+        Est_Description: "refers to computers or peripherals that are out of service."
+    }
+]);
+
+//🪓🔎Injection of documents for document_type  collection 🔎🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}   
+db.Document_type.insertMany([
+    {
+        _id: Number(increment("Document_type")),
+        Doc_Name: "Identity Document",
+        Doc_Abbreviation: "ID"
+    },
+    {
+        _id: Number(increment("Document_type")),
+        Doc_Name: "Passport",
+        Doc_Abbreviation: "PP"
+    },
+    {
+        _id: Number(increment("Document_type")),
+        Doc_Name: "Driver's License",
+        Doc_Abbreviation: "DL"
+    },
+]);
+
+//🪓🔎Injection of documents for Gender  collection 🔎🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}   
+db.Gender.insertMany([
+    {
+        _id: Number(increment("Gender")),
+        Gen_Name: "Male",
+        Gen_Abbreviation: "M"
+    },
+    {
+        _id: Number(increment("Gender")),
+        Gen_Name: "Female",
+        Gen_Abbreviation: "F"
+    },
+    {
+        _id: Number(increment("Gender")),
+        Gen_Name: "Non-Binary",
+        Gen_Abbreviation: "NB"
+    },
+]);
+
+//🪓🔎Injection of documents for Classroom collection 🔎🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+db.Classroom.insertMany([
+    {
+      _id: Number(increment("Classroom")),
+      Sln_Name: "SkyLab",
+      Sln_Description: "Programming classroom.",
+      Sln_Areas: 1
+    },
+    {
+        _id: Number(increment("Classroom")),
+        Sln_Name: "Spunikt",
+        Sln_Description: "High level programming classroom.",
+        Sln_Areas: 1
+    },
+    {
+        _id: Number(increment("Classroom")),
+        Sln_Name: "Artemis",
+        Sln_Description: "Intermediate level programming classroom.",
+        Sln_Areas: 1
+    },
+    {
+        _id: Number(increment("Classroom")),
+        Sln_Name: "Apolo",
+        Sln_Description: "Low level programming classroom.",
+        Sln_Areas: 1
+    }
+]);
