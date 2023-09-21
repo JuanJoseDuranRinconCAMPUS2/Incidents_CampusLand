@@ -47,7 +47,7 @@ db.createCollection("Classroom", {
     validator: {
        $jsonSchema: {
             bsonType: "object",
-            required: [ "_id", "Sln_Name", "Sln_Description", "Sln_Areas", "Sln_Pcs" ],
+            required: [ "_id", "Sln_Name", "Sln_Description", "Sln_Areas"],
             title: "Classroom Validation",
             properties: {
                 _id: {
@@ -71,15 +71,6 @@ db.createCollection("Classroom", {
                     bsonType: "number",
                     description: "'Sln_Areas' must be a positive number",
                     minimum: 0
-                },
-                Sln_Pcs: {
-                    bsonType: ["array", "null"],
-                    items: {
-                        bsonType: "number",
-                        description: "'Sln_Pcs' must be a positive number",
-                        minimum: 0
-                    },
-                    description: "'Sln_Pcs' must be an array with postival numbers"
                 }
             },
             additionalProperties: false
