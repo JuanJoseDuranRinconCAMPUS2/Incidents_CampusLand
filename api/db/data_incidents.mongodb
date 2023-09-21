@@ -243,5 +243,414 @@ db.Classroom.insertMany([
         Sln_Name: "Apolo",
         Sln_Description: "Low level programming classroom.",
         Sln_Areas: 1
+    },
+    {
+        _id: Number(increment("Classroom")),
+        Sln_Name: "Corvus",
+        Sln_Description: "Autonomous learning classroom 1.",
+        Sln_Areas: 2
+    },
+    {
+        _id: Number(increment("Classroom")),
+        Sln_Name: "Endor",
+        Sln_Description: "Autonomous learning classroom 2.",
+        Sln_Areas: 3
+    },
+    {
+        _id: Number(increment("Classroom")),
+        Sln_Name: "Auditorium",
+        Sln_Description: "Classroom for English and social skills classes.",
+        Sln_Areas: 4
     }
 ]);
+
+//🪓🈴Injection of documents for Computers and their Peripherals collection in skyLand 🈴🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+for (let i = 1; i <= 28; i++) {
+    let IdC = Number(increment("Computers"));
+    let IdK = Number(increment("Keyboards"));
+    let IdM = Number(increment("Mouses"));
+    let IdD = Number(increment("Diadems_Gamers"));
+    let IdS = Number(increment("Screens"));
+
+    db.Computers.insertOne(
+        {
+            _id: `CP-${IdC}`,
+            Cp_Brand: "Compumax",
+            Cp_Status: 2,
+            Cp_Description: `Compumax brand computer identified with the id "${IdC}" located in the skyLand classroom.`,
+            Cp_Classroom: 1
+        }
+    );
+    db.Keyboards.insertOne(
+        {
+            _id: `TC-${IdK}`,
+            Tc_Brand: "Compumax",
+            Tc_Status: 2,
+            Tc_Description: `Compumax keyboard identified with the id "${IdK}" located on the computer "${IdC}" in the Skulab classroom.`,
+            Tc_PC: `CP-${IdC}`
+        }
+    );
+    db.Mouses.insertOne(
+        {
+            _id: `Mo-${IdM}`,
+            Mo_Brand: "Compumax",
+            Mo_Status: 2,
+            Mo_Description: `Compumax mouse identified with the id "${IdM}" located on the computer "${IdC}" in the Skulab classroom.`,
+            Mo_PC: `CP-${IdC}`
+        }
+    );
+    db.Diadems_Gamers.insertOne(
+        {
+            _id: `Dg-${IdD}`,
+            Dg_Brand: "Compumax",
+            Dg_Status: 2,
+            Dg_Description: `Compumax gamer headset identified with the id "${IdD}" located on the computer "${IdC}" in the Skulab classroom.`,
+            Dg_PC: `CP-${IdC}`
+        }
+    );
+    db.Screens.insertOne(
+        {
+            _id: `Pt-${IdS}`,
+            Pt_Brand: "Compumax",
+            Pt_Status: 2,
+            Pt_Description: `Compumax Screen identified with the id "${IdS}" located on the computer "${IdC}" in the Skulab classroom.`,
+            Pt_PC: `CP-${IdC}`
+        }
+    );
+}
+
+
+//🪓🈸Injection of documents for Computers and their Peripherals collection in Apolo 🈸🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+for (let i = 1; i <= 32; i++) {
+    let IdC = Number(increment("Computers"));
+    let IdK = Number(increment("Keyboards"));
+    let IdM = Number(increment("Mouses"));
+    let IdD = Number(increment("Diadems_Gamers"));
+    let IdS = Number(increment("Screens"));
+
+    db.Computers.insertOne(
+        {
+            _id: `CP-${IdC}`,
+            Cp_Brand: "Compumax",
+            Cp_Status: 2,
+            Cp_Description: `Compumax brand computer identified with the id "${IdC}" located in the Apolo classroom.`,
+            Cp_Classroom: 4
+        }
+    );
+    db.Keyboards.insertOne(
+        {
+            _id: `TC-${IdK}`,
+            Tc_Brand: "Compumax",
+            Tc_Status: 2,
+            Tc_Description: `Compumax keyboard identified with the id "${IdK}" located on the computer "${IdC}" in the Apolo classroom.`,
+            Tc_PC: `CP-${IdC}`
+        }
+    );
+    db.Mouses.insertOne(
+        {
+            _id: `Mo-${IdM}`,
+            Mo_Brand: "Compumax",
+            Mo_Status: 2,
+            Mo_Description: `Compumax mouse identified with the id "${IdM}" located on the computer "${IdC}" in the Apolo classroom.`,
+            Mo_PC: `CP-${IdC}`
+        }
+    );
+    db.Diadems_Gamers.insertOne(
+        {
+            _id: `Dg-${IdD}`,
+            Dg_Brand: "Compumax",
+            Dg_Status: 2,
+            Dg_Description: `Compumax gamer headset identified with the id "${IdD}" located on the computer "${IdC}" in the Apolo classroom.`,
+            Dg_PC: `CP-${IdC}`
+        }
+    );
+    db.Screens.insertOne(
+        {
+            _id: `Pt-${IdS}`,
+            Pt_Brand: "Compumax",
+            Pt_Status: 2,
+            Pt_Description: `Compumax Screen identified with the id "${IdS}" located on the computer "${IdC}" in the Apolo classroom.`,
+            Pt_PC: `CP-${IdC}`
+        }
+    );
+}
+
+//🪓㊙️Injection of documents for Computers and their Peripherals collection in Artemis ㊙️🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+for (let i = 1; i <= 31; i++) {
+    let IdC = Number(increment("Computers"));
+    let IdK = Number(increment("Keyboards"));
+    let IdM = Number(increment("Mouses"));
+    let IdD = Number(increment("Diadems_Gamers"));
+    let IdS = Number(increment("Screens"));
+
+    db.Computers.insertOne(
+        {
+            _id: `CP-${IdC}`,
+            Cp_Brand: "Compumax",
+            Cp_Status: 2,
+            Cp_Description: `Compumax brand computer identified with the id "${IdC}" located in the Artemis classroom.`,
+            Cp_Classroom: 3
+        }
+    );
+    db.Keyboards.insertOne(
+        {
+            _id: `TC-${IdK}`,
+            Tc_Brand: "Compumax",
+            Tc_Status: 2,
+            Tc_Description: `Compumax keyboard identified with the id "${IdK}" located on the computer "${IdC}" in the Artemis classroom.`,
+            Tc_PC: `CP-${IdC}`
+        }
+    );
+    db.Mouses.insertOne(
+        {
+            _id: `Mo-${IdM}`,
+            Mo_Brand: "Compumax",
+            Mo_Status: 2,
+            Mo_Description: `Compumax mouse identified with the id "${IdM}" located on the computer "${IdC}" in the Artemis classroom.`,
+            Mo_PC: `CP-${IdC}`
+        }
+    );
+    db.Diadems_Gamers.insertOne(
+        {
+            _id: `Dg-${IdD}`,
+            Dg_Brand: "Compumax",
+            Dg_Status: 2,
+            Dg_Description: `Compumax gamer headset identified with the id "${IdD}" located on the computer "${IdC}" in the Artemis classroom.`,
+            Dg_PC: `CP-${IdC}`
+        }
+    );
+    db.Screens.insertOne(
+        {
+            _id: `Pt-${IdS}`,
+            Pt_Brand: "Compumax",
+            Pt_Status: 2,
+            Pt_Description: `Compumax Screen identified with the id "${IdS}" located on the computer "${IdC}" in the Artemis classroom.`,
+            Pt_PC: `CP-${IdC}`
+        }
+    );
+}
+
+//🪓🈂️Injection of documents for Computers and their Peripherals collection in Spunikt 🈂️🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+for (let i = 1; i <= 34; i++) {
+    let IdC = Number(increment("Computers"));
+    let IdK = Number(increment("Keyboards"));
+    let IdM = Number(increment("Mouses"));
+    let IdD = Number(increment("Diadems_Gamers"));
+    let IdS = Number(increment("Screens"));
+
+    db.Computers.insertOne(
+        {
+            _id: `CP-${IdC}`,
+            Cp_Brand: "Compumax",
+            Cp_Status: 2,
+            Cp_Description: `Compumax brand computer identified with the id "${IdC}" located in the Spunikt classroom.`,
+            Cp_Classroom: 2
+        }
+    );
+    db.Keyboards.insertOne(
+        {
+            _id: `TC-${IdK}`,
+            Tc_Brand: "Compumax",
+            Tc_Status: 2,
+            Tc_Description: `Compumax keyboard identified with the id "${IdK}" located on the computer "${IdC}" in the Spunikt classroom.`,
+            Tc_PC: `CP-${IdC}`
+        }
+    );
+    db.Mouses.insertOne(
+        {
+            _id: `Mo-${IdM}`,
+            Mo_Brand: "Compumax",
+            Mo_Status: 2,
+            Mo_Description: `Compumax mouse identified with the id "${IdM}" located on the computer "${IdC}" in the Spunikt classroom.`,
+            Mo_PC: `CP-${IdC}`
+        }
+    );
+    db.Diadems_Gamers.insertOne(
+        {
+            _id: `Dg-${IdD}`,
+            Dg_Brand: "Compumax",
+            Dg_Status: 2,
+            Dg_Description: `Compumax gamer headset identified with the id "${IdD}" located on the computer "${IdC}" in the Spunikt classroom.`,
+            Dg_PC: `CP-${IdC}`
+        }
+    );
+    db.Screens.insertOne(
+        {
+            _id: `Pt-${IdS}`,
+            Pt_Brand: "Compumax",
+            Pt_Status: 2,
+            Pt_Description: `Compumax Screen identified with the id "${IdS}" located on the computer "${IdC}" in the Spunikt classroom.`,
+            Pt_PC: `CP-${IdC}`
+        }
+    );
+}
+
+//🪓🈷️Injection of documents for Computers and their Peripherals collection in Corvus 🈷️🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+for (let i = 1; i <= 29; i++) {
+    let IdC = Number(increment("Computers"));
+    let IdK = Number(increment("Keyboards"));
+    let IdM = Number(increment("Mouses"));
+    let IdD = Number(increment("Diadems_Gamers"));
+    let IdS = Number(increment("Screens"));
+
+    db.Computers.insertOne(
+        {
+            _id: `CP-${IdC}`,
+            Cp_Brand: "Compumax",
+            Cp_Status: 2,
+            Cp_Description: `Compumax brand computer identified with the id "${IdC}" located in the Corvus classroom.`,
+            Cp_Classroom: 5
+        }
+    );
+    db.Keyboards.insertOne(
+        {
+            _id: `TC-${IdK}`,
+            Tc_Brand: "Compumax",
+            Tc_Status: 2,
+            Tc_Description: `Compumax keyboard identified with the id "${IdK}" located on the computer "${IdC}" in the Corvus classroom.`,
+            Tc_PC: `CP-${IdC}`
+        }
+    );
+    db.Mouses.insertOne(
+        {
+            _id: `Mo-${IdM}`,
+            Mo_Brand: "Compumax",
+            Mo_Status: 2,
+            Mo_Description: `Compumax mouse identified with the id "${IdM}" located on the computer "${IdC}" in the Corvus classroom.`,
+            Mo_PC: `CP-${IdC}`
+        }
+    );
+    db.Diadems_Gamers.insertOne(
+        {
+            _id: `Dg-${IdD}`,
+            Dg_Brand: "Compumax",
+            Dg_Status: 2,
+            Dg_Description: `Compumax gamer headset identified with the id "${IdD}" located on the computer "${IdC}" in the Corvus classroom.`,
+            Dg_PC: `CP-${IdC}`
+        }
+    );
+    db.Screens.insertOne(
+        {
+            _id: `Pt-${IdS}`,
+            Pt_Brand: "Compumax",
+            Pt_Status: 2,
+            Pt_Description: `Compumax Screen identified with the id "${IdS}" located on the computer "${IdC}" in the Corvus classroom.`,
+            Pt_PC: `CP-${IdC}`
+        }
+    );
+}
+
+//🪓🉐Injection of documents for Computers and their Peripherals collection in Endor 🉐🪓
+
+use("Campus_incidents");
+function increment(coleccion) {
+    const sequenceDocument = db.autoincrement.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+for (let i = 1; i <= 31; i++) {
+    let IdC = Number(increment("Computers"));
+    let IdK = Number(increment("Keyboards"));
+    let IdM = Number(increment("Mouses"));
+    let IdD = Number(increment("Diadems_Gamers"));
+    let IdS = Number(increment("Screens"));
+
+    db.Computers.insertOne(
+        {
+            _id: `CP-${IdC}`,
+            Cp_Brand: "Compumax",
+            Cp_Status: 2,
+            Cp_Description: `Compumax brand computer identified with the id "${IdC}" located in the Endor classroom.`,
+            Cp_Classroom: 6
+        }
+    );
+    db.Keyboards.insertOne(
+        {
+            _id: `TC-${IdK}`,
+            Tc_Brand: "Compumax",
+            Tc_Status: 2,
+            Tc_Description: `Compumax keyboard identified with the id "${IdK}" located on the computer "${IdC}" in the Endor classroom.`,
+            Tc_PC: `CP-${IdC}`
+        }
+    );
+    db.Mouses.insertOne(
+        {
+            _id: `Mo-${IdM}`,
+            Mo_Brand: "Compumax",
+            Mo_Status: 2,
+            Mo_Description: `Compumax mouse identified with the id "${IdM}" located on the computer "${IdC}" in the Endor classroom.`,
+            Mo_PC: `CP-${IdC}`
+        }
+    );
+    db.Diadems_Gamers.insertOne(
+        {
+            _id: `Dg-${IdD}`,
+            Dg_Brand: "Compumax",
+            Dg_Status: 2,
+            Dg_Description: `Compumax gamer headset identified with the id "${IdD}" located on the computer "${IdC}" in the Endor classroom.`,
+            Dg_PC: `CP-${IdC}`
+        }
+    );
+    db.Screens.insertOne(
+        {
+            _id: `Pt-${IdS}`,
+            Pt_Brand: "Compumax",
+            Pt_Status: 2,
+            Pt_Description: `Compumax Screen identified with the id "${IdS}" located on the computer "${IdC}" in the Endor classroom.`,
+            Pt_PC: `CP-${IdC}`
+        }
+    );
+}
