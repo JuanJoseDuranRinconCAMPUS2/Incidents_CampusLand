@@ -2,6 +2,8 @@ import express from "express";
 import { loadEnv } from "vite";
 import cors from "cors";
 
+import Area from "./routes/area.js";
+
 console.clear();
 const env = loadEnv("development", process.cwd(), 'VITE');
 
@@ -20,6 +22,7 @@ IncidentsApi.use(cors({
 
 // Endpoints API
 // ════════ ⋆★⋆ ════════
+IncidentsApi.use('/Area', Area);
 // ════════ ⋆★⋆ ════════
 
 const config = {
