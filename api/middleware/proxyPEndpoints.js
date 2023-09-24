@@ -3,6 +3,7 @@ import { validationResult } from 'express-validator';
 import { vArea } from '../controllers/vArea.js';
 import { vClassroom } from '../controllers/vClassroom.js';
 import { vCategory_Inc } from '../controllers/vCategory_Inc.js';
+import { vType_Inc } from '../controllers/vType_Inc.js';
 
 //proxy used to validate the input data methods put and post methods
 
@@ -26,6 +27,7 @@ const proxyV = (validationRule, mapping) => async (req, res, next) => {
 const proxyArea= express();
 const proxyClassroom = express();
 const proxyCategory_Inc = express();
+const proxyType_Inc = express();
 
 // Define the mappings
 
@@ -45,12 +47,19 @@ const category_IncMapping = {
     description_Category_Inc: 'Cat_Description'
 };
 
+const type_IncMapping = {
+    name_Type_Inc: 'Typ_Name',
+    description_Type_Inc: 'Typ_Description'
+};
+
 proxyArea.use(proxyV(vArea, areaMapping));
 proxyClassroom.use(proxyV(vClassroom, classroomMapping));
 proxyCategory_Inc.use(proxyV(vCategory_Inc, category_IncMapping));
+proxyType_Inc.use(proxyV(vType_Inc, type_IncMapping));
 
 export {
     proxyArea,
     proxyClassroom,
-    proxyCategory_Inc
+    proxyCategory_Inc,
+    proxyType_Inc
 }
