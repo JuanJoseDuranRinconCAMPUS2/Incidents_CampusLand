@@ -4,6 +4,7 @@ import { vArea } from '../controllers/vArea.js';
 import { vClassroom } from '../controllers/vClassroom.js';
 import { vCategory_Inc } from '../controllers/vCategory_Inc.js';
 import { vType_Inc } from '../controllers/vType_Inc.js';
+import { vDocument_type } from '../controllers/vDocument_type.js';
 
 //proxy used to validate the input data methods put and post methods
 
@@ -28,6 +29,7 @@ const proxyArea= express();
 const proxyClassroom = express();
 const proxyCategory_Inc = express();
 const proxyType_Inc = express();
+const proxyDocument_type = express();
 
 // Define the mappings
 
@@ -52,14 +54,21 @@ const type_IncMapping = {
     description_Type_Inc: 'Typ_Description'
 };
 
+const document_typeMapping = {
+    name_Document: 'Doc_Name',
+    abbreviation_Document: 'Doc_Abbreviation'
+};
+
 proxyArea.use(proxyV(vArea, areaMapping));
 proxyClassroom.use(proxyV(vClassroom, classroomMapping));
 proxyCategory_Inc.use(proxyV(vCategory_Inc, category_IncMapping));
 proxyType_Inc.use(proxyV(vType_Inc, type_IncMapping));
+proxyDocument_type.use(proxyV(vDocument_type, document_typeMapping));
 
 export {
     proxyArea,
     proxyClassroom,
     proxyCategory_Inc,
-    proxyType_Inc
+    proxyType_Inc,
+    proxyDocument_type
 }
