@@ -8,7 +8,7 @@ function errorcontroller(error, res) {
         break;
         
         case 11000:
-            res.status(500).send({status: 500, message:`Error saving data, "id" already in use`});        
+            res.status(500).send({status: 500, message: duplicateError(error)});        
         break;
         default:
             res.status(500).send({ status: 500, message: "Error executing the request" });
@@ -50,4 +50,11 @@ function ErrorText(error) {
     return text;
 }
 
+function duplicateError(error) {
+    let duplicateText = `Duplicate data error: `
+    let duplicateError = error.keyValue;
+    let nameError = Object.keys(duplicateError)[0];
+    duplicateText += `the value "${duplicateError[nameError]}" of the parameter "${nameError}" is already in the database `
+    return duplicateText
+}
 export default errorcontroller;
