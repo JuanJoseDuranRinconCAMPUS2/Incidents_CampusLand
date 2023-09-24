@@ -4,6 +4,7 @@ import cors from "cors";
 
 import Area from "./routes/area.js";
 import Classroom from "./routes/classroom.js";
+import Category_Inc from "./routes/category_Inc.js";
 
 console.clear();
 const env = loadEnv("development", process.cwd(), 'VITE');
@@ -25,6 +26,7 @@ IncidentsApi.use(cors({
 // ════════ ⋆★⋆ ════════
 IncidentsApi.use('/Area', Area);
 IncidentsApi.use('/Classroom', Classroom);
+IncidentsApi.use('/Category_Inc', Category_Inc);
 // ════════ ⋆★⋆ ════════
 
 const config = {
