@@ -34,8 +34,8 @@ export const putCategory_IncV100 = async (req,res)=>{
     let filter = parseInt(req.query.id, 10)
     try{
         if(!req.rateLimit) return;
-        let updateResult  = await collection.updateOne({_id: filter},{$set: updates});
-        if (updateResult .modifiedCount > 0) {
+        let updateResult = await collection.updateOne({_id: filter},{$set: updates});
+        if (updateResult.modifiedCount > 0) {
             res.status(200).send({status: 200, message: `Document with id ${filter} has been updated successfully`});
         } else {
             updateResult.matchedCount === 1
