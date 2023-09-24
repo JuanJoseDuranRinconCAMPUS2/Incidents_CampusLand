@@ -38,7 +38,7 @@ export const putAreaV100 = async (req,res)=>{
         if (updateResult .modifiedCount > 0) {
             res.status(200).send({status: 200, message: `Document with id ${filter} has been updated successfully`});
         } else {
-            working.matchedCount === 1
+            updateResult.matchedCount === 1
             ? res.status(200).send({ status: 200, message:`No changes made to the document with id ${filter}`})
             : res.status(404).send({ status: 404, message:`Document with id ${filter} was not found`});
         } 
