@@ -13,7 +13,7 @@ Area.get('/', getLimit(), version({
     "1.0.0": getAreaV100
 }));
 
-Area.post('/', postAndPutLimit(250), version({
+Area.post('/', postAndPutLimit(700), version({
     "1.0.0": postAreaV100,
     "1.0.1": (req, res, next) => {
         proxyArea(req, res, (err) => {
@@ -22,7 +22,7 @@ Area.post('/', postAndPutLimit(250), version({
     }
 })); 
 
-Area.put('/', postAndPutLimit(250), proxyPValidateIds, version({
+Area.put('/', postAndPutLimit(700), proxyPValidateIds, version({
     "1.0.0": putAreaV100,
     "1.0.1": (req, res, next) => {
         proxyArea(req, res, (err) => {
