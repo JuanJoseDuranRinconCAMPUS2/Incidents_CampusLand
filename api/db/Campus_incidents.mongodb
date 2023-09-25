@@ -418,10 +418,16 @@ db.createCollection("Incidents", {
                     description: "'Inc_PC' must be a positive number",
                     minimum: 0
                 },
+                Inc_Peripheral: {
+                    bsonType: ["string", "null"],
+                    description: "'Inc_Peripheral' must contain letters and numbers but no special characters.",  
+                    pattern: `^(Keyboards|Mouses|Diadems_Gamers|Screens)$`,
+                    maxLength: 25
+                },
                 Inc_Status: {
                     bsonType: "string",
                     description: "'Inc_Status' must contain letters and numbers but no special characters.",  
-                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
+                    pattern: `^(Pending|In progress|Solved)$`,
                     maxLength: 25
                 },
             },
