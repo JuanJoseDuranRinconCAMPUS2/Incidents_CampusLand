@@ -27,7 +27,7 @@ db.createCollection("Area", {
                     bsonType: "string",
                     description: "'A_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 }
             },
             additionalProperties: false
@@ -65,7 +65,7 @@ db.createCollection("Classroom", {
                     bsonType: "string",
                     description: "'A_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 },
                 Sln_Areas: {
                     bsonType: "number",
@@ -108,7 +108,7 @@ db.createCollection("Category_Inc", {
                     bsonType: "string",
                     description: "'Cat_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 }
             },
             additionalProperties: false
@@ -146,7 +146,7 @@ db.createCollection("Type_Inc", {
                     bsonType: "string",
                     description: "'Typ_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 }
             },
             additionalProperties: false
@@ -260,7 +260,7 @@ db.createCollection("Comp_Status", {
                     bsonType: "string",
                     description: "'Est_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 }
             },
             additionalProperties: false
@@ -382,21 +382,21 @@ db.createCollection("Incidents", {
                     bsonType: "string",
                     description: "'Est_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 },
                 Inc_Creation_Date: {
                     bsonType: "date",
                     description: "'Inc_Creation_Date' must be an Date",
                 },
                 Inc_Solution_Date: {
-                    bsonType: "date",
+                    bsonType: ["date", "null"],
                     description: "'Inc_Solution_Date' must be an Date",
                 },
                 Inc_Desc_Solution: {
-                    bsonType: "string",
+                    bsonType: ["string", "null"],
                     description: "'Inc_Desc_Solution' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 },
                 Inc_Area: {
                     bsonType: "number",
@@ -418,11 +418,17 @@ db.createCollection("Incidents", {
                     description: "'Inc_PC' must be a positive number",
                     minimum: 0
                 },
+                Inc_Peripheral: {
+                    bsonType: ["string", "null"],
+                    description: "'Inc_Peripheral' must contain letters and numbers but no special characters.",  
+                    pattern: `^(Keyboards|Mouses|Diadems_Gamers|Screens)$`,
+                    maxLength: 25
+                },
                 Inc_Status: {
                     bsonType: "string",
                     description: "'Inc_Status' must contain letters and numbers but no special characters.",  
-                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 20
+                    pattern: `^(Pending|In progress|Solved)$`,
+                    maxLength: 25
                 },
             },
             additionalProperties: false
@@ -463,7 +469,7 @@ db.createCollection("Computers", {
                     bsonType: "string",
                     description: "'Cp_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 },
                 Cp_Classroom: {
                     bsonType: "number",
@@ -509,7 +515,7 @@ db.createCollection("Keyboards", {
                     bsonType: "string",
                     description: "'Tc_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 },
                 Tc_PC: {
                     bsonType: "string",
@@ -556,7 +562,7 @@ db.createCollection("Mouses", {
                     bsonType: "string",
                     description: "'Mo_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 },
                 Mo_PC: {
                     bsonType: "string",
@@ -603,7 +609,7 @@ db.createCollection("Diadems_Gamers", {
                     bsonType: "string",
                     description: "'Dg_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 },
                 Dg_PC: {
                     bsonType: "string",
@@ -650,7 +656,7 @@ db.createCollection("Screens", {
                     bsonType: "string",
                     description: "'Pt_Description' must contain letters and numbers but no special characters.",  
                     pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.\s'"!?-]+$`,
-                    maxLength: 250
+                    maxLength: 600
                 },
                 Pt_PC: {
                     bsonType: "string",
@@ -697,7 +703,7 @@ db.createCollection("User_Api", {
                     bsonType: "string" , 
                     description: "'name' must be of type string with letters and numbers.",
                     pattern: "^[a-zA-Z0-9 ]+$",
-                    maxLength: 255
+                    maxLength: 45
                 },
 
                 email: { 
