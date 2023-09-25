@@ -7,6 +7,7 @@ import { vType_Inc } from '../controllers/vType_Inc.js';
 import { vDocument_type } from '../controllers/vDocument_type.js';
 import { vGender } from '../controllers/vGender.js';
 import { vComp_Status } from '../controllers/vComp_Status.js';
+import { vUser } from '../controllers/vUser.js';
 
 //proxy used to validate the input data methods put and post methods
 
@@ -34,6 +35,7 @@ const proxyType_Inc = express();
 const proxyDocument_type = express();
 const proxyGender = express();
 const proxyComp_Status = express();
+const proxyUser = express();
 
 // Define the mappings
 
@@ -73,6 +75,18 @@ const comp_StatusMapping = {
     description_Status: 'Est_Description'
 };
 
+const userMapping = {
+    name_User: 'Name',
+    typeDoc_User: 'Document_type',
+    identification_User: 'Identity_card',
+    age_User: 'Age',
+    email_User: 'Email',
+    password_User: 'Password',
+    roles_User: 'Rol',
+    cellphone_User: 'Cellphone',
+    gender_User: 'Gender'
+};
+
 proxyArea.use(proxyV(vArea, areaMapping));
 proxyClassroom.use(proxyV(vClassroom, classroomMapping));
 proxyCategory_Inc.use(proxyV(vCategory_Inc, category_IncMapping));
@@ -80,6 +94,7 @@ proxyType_Inc.use(proxyV(vType_Inc, type_IncMapping));
 proxyDocument_type.use(proxyV(vDocument_type, document_typeMapping));
 proxyGender.use(proxyV(vGender, genderMapping));
 proxyComp_Status.use(proxyV(vComp_Status, comp_StatusMapping));
+proxyUser.use(proxyV(vUser, userMapping));
 
 export {
     proxyArea,
@@ -88,5 +103,6 @@ export {
     proxyType_Inc,
     proxyDocument_type,
     proxyGender,
-    proxyComp_Status
+    proxyComp_Status,
+    proxyUser
 }
