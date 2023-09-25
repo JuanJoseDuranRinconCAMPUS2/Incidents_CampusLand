@@ -10,6 +10,7 @@ import Document_type from "./routes/document_type.js";
 import Gender from "./routes/gender.js";
 import Comp_Status from "./routes/comp_Status.js";
 import User from "./routes/user.js";
+import Incidents from "./routes/incidents.js";
 
 console.clear();
 const env = loadEnv("development", process.cwd(), 'VITE');
@@ -37,6 +38,7 @@ IncidentsApi.use('/Document_type', Document_type);
 IncidentsApi.use('/Gender', Gender);
 IncidentsApi.use('/Comp_Status', Comp_Status);
 IncidentsApi.use('/User', User);
+IncidentsApi.use('/Incidents', Incidents);
 // ════════ ⋆★⋆ ════════
 
 const config = {
