@@ -360,7 +360,7 @@ db.createCollection("Incidents", {
     validator: {
        $jsonSchema: {
             bsonType: "object",
-            required: [ "_id", "Inc_Category", "Inc_Type", "Inc_Description", "Inc_Creation_Date", "Inc_Solution_Date", "Inc_Desc_Solution", "Inc_Area", "Inc_Classroom", "Inc_User", "Inc_PC", "Inc_Status"],
+            required: [ "_id", "Inc_Category", "Inc_Type", "Inc_Description", "Inc_Creation_Date", "Inc_Solution_Date", "Inc_Desc_Solution", "Inc_Area", "Inc_Classroom", "Inc_User", "Inc_PC", "Inc_Peripheral", "Inc_Status"],
             title: "Incidents Validation",
             properties: {
                 _id: {
