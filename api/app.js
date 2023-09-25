@@ -8,6 +8,7 @@ import Category_Inc from "./routes/category_Inc.js";
 import Type_Inc from "./routes/type_Inc.js";
 import Document_type from "./routes/document_type.js";
 import Gender from "./routes/gender.js";
+import Comp_Status from "./routes/comp_Status.js";
 
 console.clear();
 const env = loadEnv("development", process.cwd(), 'VITE');
@@ -33,6 +34,7 @@ IncidentsApi.use('/Category_Inc', Category_Inc);
 IncidentsApi.use('/Type_Inc', Type_Inc);
 IncidentsApi.use('/Document_type', Document_type);
 IncidentsApi.use('/Gender', Gender);
+IncidentsApi.use('/Comp_Status', Comp_Status);
 // ════════ ⋆★⋆ ════════
 
 const config = {
