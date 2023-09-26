@@ -9,6 +9,7 @@ import { vGender } from '../controllers/vGender.js';
 import { vComp_Status } from '../controllers/vComp_Status.js';
 import { vUser } from '../controllers/vUser.js';
 import { vIncidents } from '../controllers/vIncidents.js';
+import { vComputers } from '../controllers/vComputers.js';
 
 //proxy used to validate the input data methods put and post methods
 
@@ -38,6 +39,7 @@ const proxyGender = express();
 const proxyComp_Status = express();
 const proxyUser = express();
 const proxyIncidents = express();
+const proxyComputers = express();
 
 // Define the mappings
 
@@ -103,6 +105,13 @@ const incidentsMapping = {
     status_Incident: 'Inc_Status',
 };
 
+const computersMapping = {
+    brand_Computer: 'Cp_Brand',
+    computer_Status: 'Cp_Status',
+    description_Computer: 'Cp_Description',
+    computer_Classroom: 'Cp_Classroom'
+};
+
 proxyArea.use(proxyV(vArea, areaMapping));
 proxyClassroom.use(proxyV(vClassroom, classroomMapping));
 proxyCategory_Inc.use(proxyV(vCategory_Inc, category_IncMapping));
@@ -112,6 +121,7 @@ proxyGender.use(proxyV(vGender, genderMapping));
 proxyComp_Status.use(proxyV(vComp_Status, comp_StatusMapping));
 proxyUser.use(proxyV(vUser, userMapping));
 proxyIncidents.use(proxyV(vIncidents, incidentsMapping));
+proxyComputers.use(proxyV(vComputers, computersMapping));
 
 export {
     proxyArea,
@@ -122,5 +132,6 @@ export {
     proxyGender,
     proxyComp_Status,
     proxyUser,
-    proxyIncidents
+    proxyIncidents,
+    proxyComputers
 }
