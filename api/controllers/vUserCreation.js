@@ -49,8 +49,8 @@ export const vUserCreation = [
     .isString().withMessage("password_User must be a string")
     .isLength({ max: 255 }).withMessage("password_User must have a maximum of 255 characters"),
 
-    body('versiones_Api')
-    .isArray().withMessage('versiones_Api must be a array'),
+    body('versions_User')
+    .isArray().withMessage('versions_User must be a array'),
 
     body('roles_User')
     .isArray().withMessage('roles_User must be a array')
