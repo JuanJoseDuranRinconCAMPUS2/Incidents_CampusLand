@@ -685,59 +685,59 @@ db.createCollection("User_Api", {
            bsonType: "object",
            required: [ 
                 "_id",
-                "name",
-                "email",
-                "password",
-                "versions",
-                "code_Rol",
-                "authorization"
+                "Name",
+                "Email",
+                "Password",
+                "Versions",
+                "Code_Rol",
+                "Authorization"
             ],
            title: "user_Api Validation",
            properties: {
-                 _id: { 
+                _id: { 
                     bsonType: "objectId" , 
                     description: "'_id' must be a valid ObjectId"
                 },
 
-                name: { 
+                Name: { 
                     bsonType: "string" , 
-                    description: "'name' must be of type string with letters and numbers.",
-                    pattern: "^[a-zA-Z0-9 ]+$",
+                    description: "'Name' must be of type string with letters and numbers.",
+                    pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$",
                     maxLength: 45
                 },
 
-                email: { 
+                Email: { 
                     bsonType: "string" , 
                     pattern : "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
-                    description: "'email' must be an email of less than 255 characters",
+                    description: "'Email' must be an email of less than 255 characters",
                     maxLength: 255
                 },
 
-                password: { 
+                Password: { 
                     bsonType: "string" , 
-                    description: "'password' must be of type string.",
+                    description: "'Password' must be of type string.",
                     maxLength: 255
                 },
 
-                versions: {
+                Versions: {
                   bsonType: "array", 
-                  description: "'versions' must be an array",
+                  description: "'Versions' must be an array",
                   items: {
                       bsonType: "string"
                   }
                 },
-                code_Rol: {
+                Code_Rol: {
                     bsonType: "array", 
-                    description: "'code_Rol' must be an array",
+                    description: "'Code_Rol' must be an array",
                     items: {
                         bsonType: "string" , 
-                        description: "'code_Rol' must be a valid code",
+                        description: "'Code_Rol' must be a valid code",
                         pattern: "^(CsWscEhspi6896|CsWscGexsiv6578|CsWscXvepmrk0769|YsWscQ1t3735|YsWscQ2v9865|YsWscQ3z9dc3|YsWscN1t0141|YsWscN2v3265|YsWscN3z7he8|YsWscR1x6891|YsWscR2x02a2)$"
                     }
                 },
-                authorization: {
+                Authorization: {
                     bsonType: "bool",
-                    description: "'authorization' must be true or false"
+                    description: "'Authorization' must be true or false"
                 }
            },
            additionalProperties: false
@@ -748,8 +748,8 @@ db.createCollection("User_Api", {
 });
 //indexes to avoid repeated users and emails.
 use("Campus_incidents");
-db.User_Api.createIndex({ name: 1 }, { unique: true });
-db.User_Api.createIndex({ email: 1 }, { unique: true });
+db.User_Api.createIndex({ Name: 1 }, { unique: true });
+db.User_Api.createIndex({ Email: 1 }, { unique: true });
 
 //🚧🔎 Creation of the Roles_Api collection 🔎🚧
 
@@ -871,20 +871,20 @@ db.Roles_Api.insertMany([
 use("Campus_incidents");
 db.User_Api.insertMany([
     {
-      "name": "Juan",
-      "email": "juanjoseduranrincon404@gmail.com",
-      "password": "Monochrome",
-      "versions" : ["1.0.1", "1.1.0"],
-      "code_Rol": ["CsWscGexsiv6578", "YsWscQ1t3735"],
-      "authorization": true
+      "Name": "Juan",
+      "Email": "juanjoseduranrincon404@gmail.com",
+      "Password": "Monochrome",
+      "Versions" : ["1.0.1", "1.1.0"],
+      "Code_Rol": ["CsWscGexsiv6578", "YsWscQ1t3735"],
+      "Authorization": true
     },
     {
-      "name": "Silver", 
-      "email": "prueba1@gmail.com",
-      "password": "1234",
-      "versions" : ["1.0.0", "1.1.0"],
-      "code_Rol": ["CsWscXvepmrk0769"],
-      "authorization": true
+      "Name": "Silver", 
+      "Email": "prueba1@gmail.com",
+      "Password": "1234",
+      "Versions" : ["1.0.0", "1.1.0"],
+      "Code_Rol": ["CsWscXvepmrk0769"],
+      "Authorization": true
     }
 ]);
   
