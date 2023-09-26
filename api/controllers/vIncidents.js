@@ -98,3 +98,52 @@ export const vIncidents = [
     .isLength({ max: 25 }).withMessage("status_Incident must have a maximum of 25 characters"),
 
 ]
+
+export const vIncidentsPerDate = [
+
+    body("start_Date")
+    .notEmpty().withMessage("start_Date must not be empty")
+    .isString().withMessage("start_Date must be a string")
+    .matches(/^(\d{4})-(\d{2})-(\d{2})$/).withMessage("start_Date must have the date format YYYYY-MM-DD")
+    .isLength({ max: 10 }).withMessage("start_Date must have a maximum of 10 characters"),
+
+    body("end_Date")
+    .notEmpty().withMessage("end_Date must not be empty")
+    .isString().withMessage("end_Date must be a string")
+    .matches(/^(\d{4})-(\d{2})-(\d{2})$/).withMessage("end_Date must have the date format YYYYY-MM-DD")
+    .isLength({ max: 10 }).withMessage("end_Date must have a maximum of 10 characters"),
+
+    body("filter_Date")
+    .notEmpty().withMessage("filter_Date must not be empty")
+    .isString().withMessage("filter_Date must be a string")
+    .matches(/^(solutionDate|incidentDate)$/).withMessage("filter_Date must be 'solutionDate' or 'incidentDate'")
+    .isLength({ max: 15 }).withMessage("filter_Date must have a maximum of 15 characters"),
+
+]
+
+export const vIncidentsPerPC = [
+
+    body("pc_Incident")
+    .optional({ nullable: true })
+    .notEmpty().withMessage("pc_Incident must not be empty")
+    .isNumeric().withMessage("pc_Incident must be a number")
+    .custom(value => {
+        if (parseInt(value) <= 0 || !(typeof value == "number")) {
+            throw new Error("pc_Incident must be a positive number")
+        }
+        return true;
+    }),
+
+    body("end_Date")
+    .notEmpty().withMessage("end_Date must not be empty")
+    .isString().withMessage("end_Date must be a string")
+    .matches(/^(\d{4})-(\d{2})-(\d{2})$/).withMessage("end_Date must have the date format YYYYY-MM-DD")
+    .isLength({ max: 10 }).withMessage("end_Date must have a maximum of 10 characters"),
+
+    body("filter_Date")
+    .notEmpty().withMessage("filter_Date must not be empty")
+    .isString().withMessage("filter_Date must be a string")
+    .matches(/^(solutionDate|incidentDate)$/).withMessage("filter_Date must be 'solutionDate' or 'incidentDate'")
+    .isLength({ max: 15 }).withMessage("filter_Date must have a maximum of 15 characters"),
+
+]
