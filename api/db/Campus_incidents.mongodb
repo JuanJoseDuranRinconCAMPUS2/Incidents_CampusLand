@@ -819,8 +819,8 @@ db.createCollection("Tokens_Api", {
            bsonType: "object",
            required: [ 
                 "_id",
-                "id_usuario_Api",
-                "token"
+                "Id_User",
+                "Token"
             ],
            title: "tokens_Api Validation",
            properties: {
@@ -829,12 +829,13 @@ db.createCollection("Tokens_Api", {
                     description: "'_id' must be a valid ObjectId"
                 },
 
-                id_usuario_Api: { 
-                    bsonType: "objectId" , 
-                    description: "'id_usuario_Api' must be a valid ObjectId"
+                Id_User: { 
+                    bsonType: "int" , 
+                    description: "'id_User' must be a valid int",
+                    minimum: 0
                 },
 
-                token: { 
+                Token: { 
                     bsonType: "string" , 
                     description: "'token' must be of type string.",
                 }
@@ -846,6 +847,9 @@ db.createCollection("Tokens_Api", {
     validationLevel: "strict",
 });
 
+use("Campus_incidents");
+db.Tokens_Api.createIndex({ Id_User_Api: 1 }, { unique: true });
+db.Tokens_Api.createIndex({ Token: 1 }, { expireAfterSeconds: 7200  })
 
 //🪓🔎Injection of documents for Roles_Api collection 🔎🪓
 
@@ -937,10 +941,10 @@ db.createCollection("PasswordCode", {
            bsonType: "object",
            required: [ 
                 "_id",
-                "name",
-                "email",
-                "createdAt",
-                "recovery_Code"
+                "Name",
+                "Email",
+                "CreatedAt",
+                "Recovery_Code"
             ],
            title: "passwordCode Validation",
            properties: {
@@ -949,26 +953,26 @@ db.createCollection("PasswordCode", {
                     description: "'_id' must be a valid ObjectId"
                 },
 
-                name: { 
+                Name: { 
                     bsonType: "string" , 
                     description: "'name' must be of type string with letters and numbers.",
-                    pattern: "^[a-zA-Z0-9 ]+$",
-                    maxLength: 255
+                    pattern: `^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$`,
+                    maxLength: 45
                 },
 
-                email: { 
+                Email: { 
                     bsonType: "string" , 
                     pattern : "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
                     description: "'email' must be an email of less than 255 characters",
                     maxLength: 255
                 },
 
-                createdAt: {
+                CreatedAt: {
                     bsonType: "date",
                     description: "'createdAt' must be an Date",
                 },
 
-                recovery_Code: { 
+                Recovery_Code: { 
                     bsonType: "string" , 
                     description: "'recovery_Code' must be of type string of less than 5 characters",
                     maxLength: 5
@@ -982,6 +986,6 @@ db.createCollection("PasswordCode", {
 });
 
 use("Campus_incidents");
-db.PasswordCode.createIndex({ name: 1 }, { unique: true });
-db.PasswordCode.createIndex({ email: 1 }, { unique: true });
-db.PasswordCode.createIndex({ createdAt: 1 }, { expireAfterSeconds: 900 })
+db.PasswordCode.createIndex({ Name: 1 }, { unique: true });
+db.PasswordCode.createIndex({ Email: 1 }, { unique: true });
+db.PasswordCode.createIndex({ CreatedAt: 1 }, { expireAfterSeconds: 360 })
