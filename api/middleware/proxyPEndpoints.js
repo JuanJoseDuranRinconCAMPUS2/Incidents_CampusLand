@@ -12,6 +12,7 @@ import { vIncidents } from '../controllers/vIncidents.js';
 import { vIncidentsPerDate } from '../controllers/vIncidents.js';
 import { vComputers } from '../controllers/vComputers.js';
 import { vUserCreation } from '../controllers/vUserCreation.js';
+import { vUserDeletion } from '../controllers/vUserCreation.js';
 
 //proxy used to validate the input data methods put and post methods
 
@@ -44,6 +45,7 @@ const proxyIncidents = express();
 const proxyIncidentsPerDate = express();
 const proxyComputers = express();
 const proxyUserCreation = express();
+const proxyUserDeletion = express();
 
 // Define the mappings
 
@@ -135,6 +137,10 @@ const UserCreationMapping = {
     gender_User: 'Gender'
 };
 
+const UserDeletionMapping = {
+    name_User: 'Name'
+};
+
 proxyArea.use(proxyV(vArea, areaMapping));
 proxyClassroom.use(proxyV(vClassroom, classroomMapping));
 proxyCategory_Inc.use(proxyV(vCategory_Inc, category_IncMapping));
@@ -147,6 +153,7 @@ proxyIncidents.use(proxyV(vIncidents, incidentsMapping));
 proxyIncidentsPerDate.use(proxyV(vIncidentsPerDate, incidentsPerDateMapping));
 proxyComputers.use(proxyV(vComputers, computersMapping));
 proxyUserCreation.use(proxyV(vUserCreation, UserCreationMapping));
+proxyUserDeletion.use(proxyV(vUserDeletion, UserDeletionMapping));
 
 export {
     proxyArea,
@@ -160,5 +167,6 @@ export {
     proxyIncidents,
     proxyIncidentsPerDate,
     proxyComputers,
-    proxyUserCreation
+    proxyUserCreation,
+    proxyUserDeletion
 }
