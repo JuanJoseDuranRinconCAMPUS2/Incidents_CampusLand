@@ -11,6 +11,7 @@ import { vUser } from '../controllers/vUser.js';
 import { vIncidents } from '../controllers/vIncidents.js';
 import { vIncidentsPerDate } from '../controllers/vIncidents.js';
 import { vComputers } from '../controllers/vComputers.js';
+import { vUserCreation } from '../controllers/vUserCreation.js';
 
 //proxy used to validate the input data methods put and post methods
 
@@ -42,6 +43,7 @@ const proxyUser = express();
 const proxyIncidents = express();
 const proxyIncidentsPerDate = express();
 const proxyComputers = express();
+const proxyUserCreation = express();
 
 // Define the mappings
 
@@ -120,6 +122,19 @@ const computersMapping = {
     computer_Classroom: 'Cp_Classroom'
 };
 
+const UserCreationMapping = {
+    name_User: 'Name',
+    typeDoc_User: 'Document_type',
+    identification_User: 'Identity_card',
+    age_User: 'Age',
+    email_User: 'Email',
+    password_User: 'Password',
+    versions_User: "Versions",
+    roles_User: 'Rol',
+    cellphone_User: 'Cellphone',
+    gender_User: 'Gender'
+};
+
 proxyArea.use(proxyV(vArea, areaMapping));
 proxyClassroom.use(proxyV(vClassroom, classroomMapping));
 proxyCategory_Inc.use(proxyV(vCategory_Inc, category_IncMapping));
@@ -131,6 +146,7 @@ proxyUser.use(proxyV(vUser, userMapping));
 proxyIncidents.use(proxyV(vIncidents, incidentsMapping));
 proxyIncidentsPerDate.use(proxyV(vIncidentsPerDate, incidentsPerDateMapping));
 proxyComputers.use(proxyV(vComputers, computersMapping));
+proxyUserCreation.use(proxyV(vUserCreation, UserCreationMapping));
 
 export {
     proxyArea,
@@ -143,5 +159,6 @@ export {
     proxyUser,
     proxyIncidents,
     proxyIncidentsPerDate,
-    proxyComputers
+    proxyComputers,
+    proxyUserCreation
 }
