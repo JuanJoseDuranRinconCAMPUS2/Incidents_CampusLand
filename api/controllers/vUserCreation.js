@@ -83,3 +83,13 @@ export const vUserCreation = [
         return true;
     })
 ]
+
+export const vUserDeletion = [
+
+    body("name_User")
+    .notEmpty().withMessage("name_User must not be empty")
+    .isString().withMessage("name_User must be a string")
+    .matches(/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ '-]+$/).withMessage("name_User must only contain alphanumeric characters, spaces and specific accented characters.")
+    .isLength({ max: 45 }).withMessage("name_User must have a maximum of 45 characters"),
+
+]
