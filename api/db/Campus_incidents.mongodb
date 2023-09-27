@@ -862,6 +862,46 @@ db.Roles_Api.insertMany([
       "access": "Access to crud methods of all collections requested by the camper"
     },
     {
+        "_id": "YsWscQ1t3735",
+        "rol": "M1",
+        "access": "Access to crud methods of all collections requested by the M1 camper"
+    },
+    {
+        "_id": "YsWscQ2v9865",
+        "rol": "M2",
+        "access": "Access to crud methods of all collections requested by the M2 camper"
+    },
+    {
+        "_id": "YsWscQ3z9dc3",
+        "rol": "M3",
+        "access": "Access to crud methods of all collections requested by the M3 camper"
+    },
+    {
+        "_id": "YsWscN1t0141",
+        "rol": "J1",
+        "access": "Access to crud methods of all collections requested by the J1 camper"
+    },
+    {
+        "_id": "YsWscN2v3265",
+        "rol": "J2",
+        "access": "Access to crud methods of all collections requested by the J2 camper"
+    },
+    {
+        "_id": "YsWscN3z7he8",
+        "rol": "J3",
+        "access": "Access to crud methods of all collections requested by the J3 camper"
+    },
+    {
+        "_id": "YsWscR1x6891",
+        "rol": "V1",
+        "access": "Access to crud methods of all collections requested by the V1 camper"
+    },
+    {
+        "_id": "YsWscR2x02a2",
+        "rol": "V2",
+        "access": "Access to crud methods of all collections requested by the V2 camper"
+    },
+    {
       "_id": "CsWscXvepmrk0769",
       "rol": "Trainer",
       "access": "Access to crud methods and special trainer methods of all collections requested by the Trainer"
