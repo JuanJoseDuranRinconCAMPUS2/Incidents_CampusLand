@@ -5,6 +5,8 @@ import errorcontroller from "../middleware/errorsMongodb.js";
 let db = await con();
 
 const proxyCreateUser = express();
+const proxyDeleteUser = express();
+
 let User_Api = db.collection("User_Api");
 let User = db.collection("User");
 
@@ -74,4 +76,20 @@ proxyCreateUser.use(async(req, res, next)=>{
       errorcontroller(error, res);
     }
 });
-export {proxyCreateUser};
+
+proxyDeleteUser.use(async(req, res, next)=>{
+    try {
+        const data = req.body;
+
+        let validateName = await validatorExistenceValues("Name", data.Name);
+        if (!validateName) {
+            let mensaje = {status: 409, message: `The user with the username: '${data.Name}', is not registered in the database.`};
+            ErrorValidation(res, mensaje);
+            return;
+        }
+        next();
+    } catch (error) {
+      errorcontroller(error, res);
+    }
+});
+export {proxyCreateUser, proxyDeleteUser};
