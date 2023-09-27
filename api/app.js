@@ -13,6 +13,8 @@ import User from "./routes/user.js";
 import Incidents from "./routes/incidents.js";
 import Computers from "./routes/computers.js";
 
+import UserCreation from "./routes/UserCreation.js";
+
 console.clear();
 const env = loadEnv("development", process.cwd(), 'VITE');
 
@@ -27,6 +29,7 @@ IncidentsApi.use(cors({
 
 //loginNative
 // ════════ ⋆★⋆ ════════
+IncidentsApi.use('/UserCreation', UserCreation);
 // ════════ ⋆★⋆ ════════
 
 // Endpoints API
