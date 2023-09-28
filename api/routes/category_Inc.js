@@ -4,12 +4,13 @@ import { proxyCategory_Inc } from '../middleware/proxyPEndpoints.js';
 import { proxyPValidateIds } from '../middleware/proxyIdsV.js';
 import { getCategory_IncV100, postCategory_IncV100, putCategory_IncV100, deleteCategory_IncV100 } from '../versions/V1.0.0/Category_Incv1.0.0.js';
 import { getLimit, postAndPutLimit , deleteLimit } from '../middleware/rateLimit.js';
+import { proxyValidationTokens } from '../middleware/proxyValidationTokens.js';
 
 const Category_Inc = Router();
 const version = routesVersioning();
 
 
-Category_Inc.get('/', getLimit(), version({
+Category_Inc.get('/', getLimit(), proxyValidationTokens(["Admin" , "Camper" , "Trainer"]), version({
     "1.0.0": getCategory_IncV100
 }));
 
@@ -18,6 +19,13 @@ Category_Inc.post('/', postAndPutLimit(750), version({
     "1.0.1": (req, res, next) => {
         proxyCategory_Inc(req, res, (err) => {
             postCategory_IncV100(req, res, next);
+        });
+    },
+    "1.0.2": (req, res, next) => {
+        proxyValidationTokens(["Admin", "Trainer"])(req, res, (err) => {
+            proxyCategory_Inc(req, res, (err) => {
+                postCategory_IncV100(req, res, next);
+            });
         });
     }
 })); 
@@ -28,10 +36,17 @@ Category_Inc.put('/', postAndPutLimit(750), proxyPValidateIds, version({
         proxyCategory_Inc(req, res, (err) => {
             putCategory_IncV100(req, res, next);
         });
+    },
+    "1.0.2": (req, res, next) => {
+        proxyValidationTokens(["Admin", "Trainer"])(req, res, (err) => {
+            proxyCategory_Inc(req, res, (err) => {
+                putCategory_IncV100(req, res, next);
+            });
+        });
     }
 })); 
 
-Category_Inc.delete('/', deleteLimit(), proxyPValidateIds, version({
+Category_Inc.delete('/', deleteLimit(), proxyValidationTokens(["Admin", "Trainer"]), proxyPValidateIds, version({
     "1.0.0": deleteCategory_IncV100
 })); 
 

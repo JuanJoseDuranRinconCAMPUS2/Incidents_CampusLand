@@ -5,11 +5,12 @@ import { proxyCreateUser, proxyDeleteUser } from "../middleware/proxyCreateUser.
 import { UserCreationv110, getUsersNotAuthorizedV110, deleteUserNotAuthorizedV110 } from "../versions/V1.1.0/userCreationv1.1.0.js";
 import { getLimit, postAndPutLimit , deleteLimit } from '../middleware/rateLimit.js';
 import { validatorIds } from "../controllers/vId.js";
+import { proxyValidationTokens } from '../middleware/proxyValidationTokens.js';
 
 const UserCreation = Router();
 const version = routesVersioning();
 
-UserCreation.get('/UsersNotAuthorized', getLimit(), validatorIds, version({
+UserCreation.get('/UsersNotAuthorized', getLimit(), proxyValidationTokens(["Admin" , "Trainer"]),  validatorIds, version({
     "1.1.0": getUsersNotAuthorizedV110
 }))
 
@@ -17,7 +18,7 @@ UserCreation.post('/', postAndPutLimit(900), proxyUserCreation, proxyCreateUser,
     "1.1.0": UserCreationv110
 }))
 
-UserCreation.delete('/deleteUserNotAuthorized', postAndPutLimit(120), proxyUserDeletion, proxyDeleteUser, version({
+UserCreation.delete('/deleteUserNotAuthorized', postAndPutLimit(120), proxyValidationTokens(["Admin" , "Camper" , "Trainer"]), proxyUserDeletion, proxyDeleteUser, version({
     "1.1.0": deleteUserNotAuthorizedV110
 }))
 

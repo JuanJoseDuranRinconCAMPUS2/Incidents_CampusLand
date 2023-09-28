@@ -7,12 +7,13 @@ import {
     totalIncidentsPerClassroomV101, totalIncidentsPerAreaV101,  totalIncidentsV101 ,getIncidentsPerUserV101, getIncidentsPerAreaV101,
     getIncidentsPerClassroomV101, getIncidentsPerPriorityV101, getIncidentsPerTypeV101, getIncidentsIDV101, getIncidentsPerDateV101, getIncidentsPerPCV101 } from '../versions/V1.0.1/specialRIncidents.js';
 import { getLimit, postAndPutLimit , deleteLimit } from '../middleware/rateLimit.js';
+import { proxyValidationTokens } from '../middleware/proxyValidationTokens.js';
 
 const Incidents = Router();
 const version = routesVersioning();
 
 
-Incidents.get('/', getLimit(), version({
+Incidents.get('/', getLimit(), proxyValidationTokens(["Admin" , "Camper" , "Trainer"]), version({
     "1.0.0": getIncidentsV100,
     "1.0.1": (req, res, next) => {
         proxyPValidateIds(req, res, (err) => {
@@ -52,13 +53,13 @@ Incidents.get('/', getLimit(), version({
     
 }));
 
-Incidents.get('/total-incidents', getLimit(), version({
+Incidents.get('/total-incidents', getLimit(), proxyValidationTokens(["Admin" , "Camper" , "Trainer"]), version({
     "1.0.0": totalIncidentsV101,
     "1.1.0": totalIncidentsPerClassroomV101,
     "1.2.0": totalIncidentsPerAreaV101
 }));
 
-Incidents.get('/incidents-date', postAndPutLimit(260), version({
+Incidents.get('/incidents-date', postAndPutLimit(260), proxyValidationTokens(["Admin" , "Camper" , "Trainer"]), version({
     "1.0.0": (req, res, next) => {
         proxyIncidentsPerDate(req, res, (err) => {
             getIncidentsPerDateV101(req, res, next);
@@ -72,6 +73,13 @@ Incidents.post('/', postAndPutLimit(2600), version({
         proxyIncidents(req, res, (err) => {
             postIncidentsV100(req, res, next);
         });
+    },
+    "1.0.2": (req, res, next) => {
+        proxyValidationTokens(["Admin", "Camper" , "Trainer"])(req, res, (err) => {
+            proxyIncidents(req, res, (err) => {
+                postIncidentsV100(req, res, next);
+            });
+        });
     }
 })); 
 
@@ -81,10 +89,17 @@ Incidents.put('/', postAndPutLimit(2600), proxyPValidateIds, version({
         proxyIncidents(req, res, (err) => {
             putIncidentsV100(req, res, next);
         });
+    },
+    "1.0.2": (req, res, next) => {
+        proxyValidationTokens(["Admin", "Camper" , "Trainer"])(req, res, (err) => {
+            proxyIncidents(req, res, (err) => {
+                putIncidentsV100(req, res, next);
+            });
+        });
     }
 })); 
 
-Incidents.delete('/', deleteLimit(), proxyPValidateIds, version({
+Incidents.delete('/', deleteLimit(), proxyValidationTokens(["Admin" , "Camper" , "Trainer"]), proxyPValidateIds, version({
     "1.0.0": deleteIncidentsV100
 })); 
 

@@ -4,12 +4,13 @@ import { proxyDocument_type } from '../middleware/proxyPEndpoints.js';
 import { proxyPValidateIds } from '../middleware/proxyIdsV.js';
 import { getDocument_typeV100, postDocument_typeV100, putDocument_typeV100, deleteDocument_typeV100 } from '../versions/V1.0.0/document_typev1.0.0.js';
 import { getLimit, postAndPutLimit , deleteLimit } from '../middleware/rateLimit.js';
+import { proxyValidationTokens } from '../middleware/proxyValidationTokens.js';
 
 const Document_type = Router();
 const version = routesVersioning();
 
 
-Document_type.get('/', getLimit(), version({
+Document_type.get('/', getLimit(), proxyValidationTokens(["Admin" , "Camper" , "Trainer"]), version({
     "1.0.0": getDocument_typeV100
 }));
 
@@ -18,6 +19,13 @@ Document_type.post('/', postAndPutLimit(250), version({
     "1.0.1": (req, res, next) => {
         proxyDocument_type(req, res, (err) => {
             postDocument_typeV100(req, res, next);
+        });
+    },
+    "1.0.2": (req, res, next) => {
+        proxyValidationTokens(["Admin", "Trainer"])(req, res, (err) => {
+            proxyDocument_type(req, res, (err) => {
+                postDocument_typeV100(req, res, next);
+            });
         });
     }
 })); 
@@ -28,10 +36,17 @@ Document_type.put('/', postAndPutLimit(250), proxyPValidateIds, version({
         proxyDocument_type(req, res, (err) => {
             putDocument_typeV100(req, res, next);
         });
+    },
+    "1.0.2": (req, res, next) => {
+        proxyValidationTokens(["Admin", "Trainer"])(req, res, (err) => {
+            proxyDocument_type(req, res, (err) => {
+                putDocument_typeV100(req, res, next);
+            });
+        });
     }
 })); 
 
-Document_type.delete('/', deleteLimit(), proxyPValidateIds, version({
+Document_type.delete('/', deleteLimit(), proxyValidationTokens(["Admin", "Trainer"]), proxyPValidateIds, version({
     "1.0.0": deleteDocument_typeV100
 })); 
 
