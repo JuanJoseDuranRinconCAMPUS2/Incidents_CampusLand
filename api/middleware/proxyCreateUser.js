@@ -10,9 +10,9 @@ const proxyDeleteUser = express();
 let User_Api = db.collection("User_Api");
 let User = db.collection("User");
 
-let validatorExistenceValues = async (nombre, valor) => {
-    const userApiResult = await User_Api.findOne({ [nombre]: valor });
-    const userResult = await User.findOne({ [nombre]: valor });
+let validatorExistenceValues = async (name, value) => {
+    const userApiResult = await User_Api.findOne({ [name]: value });
+    const userResult = await User.findOne({ [name]: value });
 
     if (userApiResult || userResult) {
         return true;
@@ -27,6 +27,7 @@ let ErrorValidation = (res, mensaje) => {
 let versions_Api = [
     "1.0.0",
     "1.0.1",
+    "1.0.2",
     "1.1.0",
     "1.2.0",
     "1.3.0",
