@@ -71,3 +71,14 @@ export const deleteUserNotAuthorizedV110 = async (req,res)=>{
         errorcontroller(error, res)
     }
 }
+
+export const authorizeUsersV110 = async (req,res)=>{
+    try {
+        if(!req.rateLimit) return;
+        let Name = req.body.Name
+        const validStatus = await User_Api.findOneAndUpdate({ Name: Name }, {$set: { Authorization : true}});
+        res.status(200).send({ status: 200, message:`The user: ${Name} has been authorized `});
+    } catch (error) {
+        errorcontroller(error, res)
+    }
+}
