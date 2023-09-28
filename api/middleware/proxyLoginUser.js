@@ -8,13 +8,14 @@ const proxyCredentialsUser = express();
 
 let User_Api = db.collection("User_Api");
 let User = db.collection("User");
+let Roles_Api = db.collection("Roles_Api");
 
 let validatorExistenceValues = async (name, value) => {
     const userApiResult = await User_Api.findOne({ [name]: value });
     const userResult = await User.findOne({ [name]: value });
 
     if (userApiResult || userResult) {
-        return { Password : userResult.Password , _id : userResult._id, Versions : userApiResult.Versions, Authorization : userApiResult.Authorization};
+        return { Password : userResult.Password , _id : userResult._id, Versions : userApiResult.Versions, Authorization : userApiResult.Authorization, Code_Rol : userApiResult.Code_Rol};
     }
     return false;
 }
@@ -40,9 +41,18 @@ proxyCredentialsUser.use(async(req, res, next)=>{
             return;
         }
 
+        let rolUser = []; 
+        let rols = validateName.Code_Rol
+        for (const rolId of rols) {
+            const rolName = await Roles_Api.findOne({ _id: rolId });
+            rolUser.push(rolName.rol);
+        }
+        
         req.body.id_User = validateName._id
         req.body.Versions = validateName.Versions
         req.body.Authorization = validateName.Authorization
+        req.body.Code_Rol = rolUser
+        
         next();
     } catch (error) {
       errorcontroller(error, res);
