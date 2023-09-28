@@ -819,7 +819,7 @@ db.createCollection("Tokens_Api", {
            bsonType: "object",
            required: [ 
                 "_id",
-                "Id_User",
+                "Id_User_Api",
                 "Token"
             ],
            title: "tokens_Api Validation",
@@ -829,7 +829,7 @@ db.createCollection("Tokens_Api", {
                     description: "'_id' must be a valid ObjectId"
                 },
 
-                Id_User: { 
+                Id_User_Api: { 
                     bsonType: "int" , 
                     description: "'id_User' must be a valid int",
                     minimum: 0
