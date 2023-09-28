@@ -8,6 +8,12 @@ import { vDocument_type } from '../controllers/vDocument_type.js';
 import { vGender } from '../controllers/vGender.js';
 import { vComp_Status } from '../controllers/vComp_Status.js';
 import { vUser } from '../controllers/vUser.js';
+import { vIncidents } from '../controllers/vIncidents.js';
+import { vIncidentsPerDate } from '../controllers/vIncidents.js';
+import { vComputers } from '../controllers/vComputers.js';
+import { vUserCreation } from '../controllers/vUserCreation.js';
+import { vUserDeletion } from '../controllers/vUserCreation.js';
+import { vLoginUser } from '../controllers/vLoginUser.js';
 
 //proxy used to validate the input data methods put and post methods
 
@@ -36,6 +42,12 @@ const proxyDocument_type = express();
 const proxyGender = express();
 const proxyComp_Status = express();
 const proxyUser = express();
+const proxyIncidents = express();
+const proxyIncidentsPerDate = express();
+const proxyComputers = express();
+const proxyUserCreation = express();
+const proxyUserDeletion = express();
+const proxyLoginUser = express();
 
 // Define the mappings
 
@@ -87,6 +99,55 @@ const userMapping = {
     gender_User: 'Gender'
 };
 
+const incidentsMapping = {
+    category_Incident: 'Inc_Category',
+    type_Incident: 'Inc_Type',
+    desc_Incident: 'Inc_Description',
+    solution_Incident: 'Inc_Solution_Date',
+    desc_Solution_Incident: 'Inc_Desc_Solution',
+    area_Incident: 'Inc_Area',
+    classroom_Incident: 'Inc_Classroom',
+    user_Incident: 'Inc_User',
+    pc_Incident: 'Inc_PC',
+    peripheral_Incident: 'Inc_Peripheral',
+    status_Incident: 'Inc_Status',
+};
+
+const incidentsPerDateMapping = {
+    start_Date: 'start',
+    end_Date: 'end',
+    filter_Date: 'filter'
+};
+
+const computersMapping = {
+    brand_Computer: 'Cp_Brand',
+    computer_Status: 'Cp_Status',
+    description_Computer: 'Cp_Description',
+    computer_Classroom: 'Cp_Classroom'
+};
+
+const UserCreationMapping = {
+    name_User: 'Name',
+    typeDoc_User: 'Document_type',
+    identification_User: 'Identity_card',
+    age_User: 'Age',
+    email_User: 'Email',
+    password_User: 'Password',
+    versions_User: "Versions",
+    roles_User: 'Rol',
+    cellphone_User: 'Cellphone',
+    gender_User: 'Gender'
+};
+
+const UserDeletionMapping = {
+    name_User: 'Name'
+};
+
+const LoginUserMapping = {
+    name_User: 'Name',
+    password_User: 'Password'
+};
+
 proxyArea.use(proxyV(vArea, areaMapping));
 proxyClassroom.use(proxyV(vClassroom, classroomMapping));
 proxyCategory_Inc.use(proxyV(vCategory_Inc, category_IncMapping));
@@ -95,6 +156,12 @@ proxyDocument_type.use(proxyV(vDocument_type, document_typeMapping));
 proxyGender.use(proxyV(vGender, genderMapping));
 proxyComp_Status.use(proxyV(vComp_Status, comp_StatusMapping));
 proxyUser.use(proxyV(vUser, userMapping));
+proxyIncidents.use(proxyV(vIncidents, incidentsMapping));
+proxyIncidentsPerDate.use(proxyV(vIncidentsPerDate, incidentsPerDateMapping));
+proxyComputers.use(proxyV(vComputers, computersMapping));
+proxyUserCreation.use(proxyV(vUserCreation, UserCreationMapping));
+proxyUserDeletion.use(proxyV(vUserDeletion, UserDeletionMapping));
+proxyLoginUser.use(proxyV(vLoginUser, LoginUserMapping));
 
 export {
     proxyArea,
@@ -104,5 +171,11 @@ export {
     proxyDocument_type,
     proxyGender,
     proxyComp_Status,
-    proxyUser
+    proxyUser,
+    proxyIncidents,
+    proxyIncidentsPerDate,
+    proxyComputers,
+    proxyUserCreation,
+    proxyUserDeletion,
+    proxyLoginUser
 }

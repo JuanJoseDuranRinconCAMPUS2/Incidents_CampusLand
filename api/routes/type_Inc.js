@@ -4,12 +4,13 @@ import { proxyType_Inc } from '../middleware/proxyPEndpoints.js';
 import { proxyPValidateIds } from '../middleware/proxyIdsV.js';
 import { getType_IncV100, postType_IncV100, putType_IncV100, deleteType_IncV100 } from '../versions/V1.0.0/type_Incv1.0.0.js';
 import { getLimit, postAndPutLimit , deleteLimit } from '../middleware/rateLimit.js';
+import { proxyValidationTokens } from '../middleware/proxyValidationTokens.js';
 
 const Type_Inc = Router();
 const version = routesVersioning();
 
 
-Type_Inc.get('/', getLimit(), version({
+Type_Inc.get('/', getLimit(), proxyValidationTokens(["Admin" , "Camper" , "Trainer"]), version({
     "1.0.0": getType_IncV100
 }));
 
@@ -18,6 +19,13 @@ Type_Inc.post('/', postAndPutLimit(760), version({
     "1.0.1": (req, res, next) => {
         proxyType_Inc(req, res, (err) => {
             postType_IncV100(req, res, next);
+        });
+    },
+    "1.0.2": (req, res, next) => {
+        proxyValidationTokens(["Admin", "Trainer"])(req, res, (err) => {
+            proxyType_Inc(req, res, (err) => {
+                postType_IncV100(req, res, next);
+            });
         });
     }
 })); 
@@ -28,10 +36,17 @@ Type_Inc.put('/', postAndPutLimit(760), proxyPValidateIds, version({
         proxyType_Inc(req, res, (err) => {
             putType_IncV100(req, res, next);
         });
+    },
+    "1.0.2": (req, res, next) => {
+        proxyValidationTokens(["Admin", "Trainer"])(req, res, (err) => {
+            proxyType_Inc(req, res, (err) => {
+                putType_IncV100(req, res, next);
+            });
+        });
     }
 })); 
 
-Type_Inc.delete('/', deleteLimit(), proxyPValidateIds, version({
+Type_Inc.delete('/', deleteLimit(), proxyValidationTokens(["Admin" , "Trainer"]), proxyPValidateIds, version({
     "1.0.0": deleteType_IncV100
 })); 
 
