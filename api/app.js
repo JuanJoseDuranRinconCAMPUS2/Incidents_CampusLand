@@ -15,6 +15,8 @@ import Computers from "./routes/computers.js";
 
 import UserCreation from "./routes/UserCreation.js";
 import LoginUser from "./routes/loginUser.js";
+import SendRecoveryCode from "./routes/sendRecoveryCode.js";
+import RecoveryPassword from "./routes/recoveryPassword.js";
 
 console.clear();
 const env = loadEnv("development", process.cwd(), 'VITE');
@@ -32,6 +34,8 @@ IncidentsApi.use(cors({
 // ════════ ⋆★⋆ ════════
 IncidentsApi.use('/UserCreation', UserCreation);
 IncidentsApi.use('/LoginUser', LoginUser);
+IncidentsApi.use('/SendRecoveryCode', SendRecoveryCode);
+IncidentsApi.use('/RecoveryPassword', RecoveryPassword);
 // ════════ ⋆★⋆ ════════
 
 // Endpoints API
