@@ -15,6 +15,7 @@ import { vUserCreation } from '../controllers/vUserCreation.js';
 import { vUserDeletion } from '../controllers/vUserCreation.js';
 import { vLoginUser } from '../controllers/vLoginUser.js';
 import { vGeneratePasswordKey } from '../controllers/vGeneratePasswordKey.js';
+import { vRecoveryPassword } from '../controllers/vRecoveryPassword.js';
 
 //proxy used to validate the input data methods put and post methods
 
@@ -50,7 +51,7 @@ const proxyUserCreation = express();
 const proxyUserDeletion = express();
 const proxyLoginUser = express();
 const proxySendRecoveryCode = express();
-
+const proxyRecoveryPassword = express();
 // Define the mappings
 
 const areaMapping = {
@@ -155,6 +156,13 @@ const SendRecoveryCodeMapping = {
     email_User: 'Email'
 };
 
+const RecoveryPasswordMapping = {
+    name_User: 'Name',
+    email_User: 'Email',
+    password_User: 'NewPassword',
+    code_Recovery: 'Recovery_Code'
+};
+
 proxyArea.use(proxyV(vArea, areaMapping));
 proxyClassroom.use(proxyV(vClassroom, classroomMapping));
 proxyCategory_Inc.use(proxyV(vCategory_Inc, category_IncMapping));
@@ -170,6 +178,7 @@ proxyUserCreation.use(proxyV(vUserCreation, UserCreationMapping));
 proxyUserDeletion.use(proxyV(vUserDeletion, UserDeletionMapping));
 proxyLoginUser.use(proxyV(vLoginUser, LoginUserMapping));
 proxySendRecoveryCode.use(proxyV(vGeneratePasswordKey, SendRecoveryCodeMapping));
+proxyRecoveryPassword.use(proxyV(vRecoveryPassword, RecoveryPasswordMapping));
 
 export {
     proxyArea,
@@ -186,5 +195,6 @@ export {
     proxyUserCreation,
     proxyUserDeletion,
     proxyLoginUser, 
-    proxySendRecoveryCode
+    proxySendRecoveryCode, 
+    proxyRecoveryPassword
 }
