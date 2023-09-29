@@ -136,3 +136,102 @@ export const emailTemplateCode = (p1) => {
 </html>    
 `
 }
+
+
+export const emailCreationUser = (p1) => {
+    return `
+    <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            text-align: center;
+            background-color: #fffadb;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="https://i.ibb.co/mNhsvR7/Home-Emailuser-Created.png" alt="homeUserCreated">
+    </div>
+
+    <p>Hello ${p1.Name},</p>
+
+    <p>Welcome to our incident management platform!</p>
+    <br>
+    <p>We have successfully created your account on our platform. We are excited to have you as part of our community.</p>
+    <br>
+
+    <div>
+        <img src="https://cdn.dribbble.com/users/1542965/screenshots/3745969/user_icon_to_medal_01.gif" alt="gifUser">
+    </div>
+
+    <br>
+    <p>However, before you can start using our website, you need approval from a trainer or administrator. This is part of our security and quality process to ensure the best possible experience.</p>
+
+    <br>
+    <p>Once your account is reviewed and approved, you will receive a confirmation email and you can start using our services.</p>
+
+    <br>
+    <p>Thank you for being part of the IncidentsCampus family!</p>
+    <br>
+
+    <p>Sincerely yours,</p>
+    <p>Campus Incidents</p>
+
+    <div>
+        <img src="https://i.pinimg.com/originals/44/8c/13/448c13df411af9f2136e41f41e716ad9.gif" alt="gifPurple">
+    </div>
+</body>
+</html>    
+`
+}
+
+export const emailValidationUser = (p1) => {
+    return `
+    <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            text-align: center;
+            background-color: #fffadb;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="https://i.ibb.co/VVzXvLH/home-Emai-Validated-User.png" alt="homeUserCreated">
+    </div>
+
+    <p>Hello ${p1.Name},</p>
+
+    <p>Welcome to our incident management platform!</p>
+    <br>
+    <p>We are pleased to inform you that your account on our incident management platform has been successfully validated.</p>
+    <br>
+
+    <div>
+        <img src="https://media.tenor.com/mcWaLZH4OjUAAAAC/hello-neon.gif" alt="gifUser">
+    </div>
+
+    <br>
+    <p>You now have full access to our services and can start using them immediately.</p>
+
+    <br>
+    <p>   If you have any questions or need assistance, please do not hesitate to contact our support team.</p>
+
+    <br>
+    <p>Thank you for being part of the IncidentsCampus family!</p>
+    <br>
+
+    <p>Sincerely yours,</p>
+    <p>Campus Incidents</p>
+
+    <div>
+        <img src="https://i.pinimg.com/originals/44/8c/13/448c13df411af9f2136e41f41e716ad9.gif" alt="gifPurple">
+    </div>
+</body>
+</html>    
+`
+}
