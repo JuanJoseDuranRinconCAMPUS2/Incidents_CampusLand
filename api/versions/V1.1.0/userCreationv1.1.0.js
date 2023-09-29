@@ -1,14 +1,33 @@
 import { con } from "../../db/atlas.js";
 import errorcontroller from "../../middleware/errorsMongodb.js";
+import { transporter } from "../../controllers/emailControllers.js";
 import { increment } from "../../db/autoincrement.js";
 import { decrease } from "../../db/autoincrement.js";
+import { loadEnv } from 'vite'
 
+import { emailCreationUser } from "../../models/emailTemplate.js";
+import { emailValidationUser } from "../../models/emailTemplate.js";
+
+const env = loadEnv("development", process.cwd(), 'NODEEMAIL');
 let db= await con();
 let User_Api = db.collection("User_Api");
 let User = db.collection("User");
 let Roles_Api = db.collection("Roles_Api");
 
 let rolesText = ""
+
+async function sendEmail(data, subject, content){
+    const info = await transporter.sendMail({
+        from: `"🐰Campus Incidents🐰" <${env.NODEEMAIL_MAIL_NAME}>`, 
+        to: `${data.Email}`, 
+        subject: `${subject}: ${data.Name}✔`, 
+        html: content,
+    });
+    
+    console.log("Message sent: %s", info.messageId);
+}
+
+
 export const getUsersNotAuthorizedV110 = async ( req,res)=>{
     try {
         if(!req.rateLimit) return;
@@ -52,7 +71,9 @@ export const UserCreationv110 = async (req, res) =>{
             rolesText += `[${rolName.rol}] `;
         });
         await Promise.all(promises);
-    
+        
+        sendEmail(dataUserApi, "User creation", emailCreationUser(dataUserApi))
+
         res.status(200).send({status: 200, message: `The user: '${dataUser.Name}', with the roles of: '${rolesText}', has been successfully created.`});
     } catch (error) {
         await decrease("User");
@@ -78,6 +99,7 @@ export const authorizeUsersV110 = async (req,res)=>{
         let Name = req.body.Name
         const validStatus = await User_Api.findOneAndUpdate({ Name: Name }, {$set: { Authorization : true}});
         res.status(200).send({ status: 200, message:`The user: ${Name} has been authorized `});
+        sendEmail(validStatus, "User allowed", emailValidationUser(validStatus));
     } catch (error) {
         errorcontroller(error, res)
     }
