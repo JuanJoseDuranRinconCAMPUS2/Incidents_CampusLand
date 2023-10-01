@@ -19,7 +19,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-export default function Roles() {
+export default function RolesHome() {
 
     const [expanded, setExpanded] = React.useState(false);
     const handleChange = (panel) => (event, isExpanded) => {
@@ -134,6 +134,7 @@ export default function Roles() {
                         justifyContent="center"
                         alignItems="center"
                         minHeight={180}
+                        paddingY={{ xs: 3, sm: 3, md: 12 }}
                     >
                         <ImageList sx={{ width: '100%', height: 'auto' }} cols={3} rowHeight={'auto'}>
                             {itemData.map((item) => (
@@ -149,7 +150,7 @@ export default function Roles() {
                                 </ImageListItem>
                             ))}
                         </ImageList>
-                        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} >
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1bh-content"
