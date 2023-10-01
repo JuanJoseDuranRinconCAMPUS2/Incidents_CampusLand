@@ -37,14 +37,13 @@ function NavbarHome() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#734f9a' }}>
+    <AppBar position="static" sx={{ backgroundColor: '#c18fdbc3' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <RocketLaunchIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
-            component="a"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -58,7 +57,7 @@ function NavbarHome() {
             Incidents_CampusLand
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', backgroundColor: '#734f9a' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -135,7 +134,7 @@ function NavbarHome() {
                     flexGrow: 1,
                     fontWeight: 700,
                     letterSpacing: '.1rem',
-                    color: '#a0de59',
+                    color: '#bcf3be',
                     textDecoration: 'none',
                   }}
                 >{page}</Typography>
