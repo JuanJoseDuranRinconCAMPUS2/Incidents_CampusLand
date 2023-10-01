@@ -159,7 +159,7 @@ export default function Roles() {
                                 <Typography sx={{ width: '33%', flexShrink: 0 }}>
                                         Campers!
                                 </Typography>
-                                <Typography sx={{ color: 'text.secondary' }}>you have access to basic functionalities</Typography>
+                                <Typography sx={{ color: 'text.secondary' }}>You have access to basic functionalities</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
                                 <Typography>
@@ -200,7 +200,7 @@ export default function Roles() {
                                     Admins!
                                 </Typography>
                                 <Typography sx={{ color: 'text.secondary' }}>
-                                you have access to total access to functionalities
+                                You have access to total access to functionalities
                                 </Typography>
                             </AccordionSummary>
                             <AccordionDetails>
