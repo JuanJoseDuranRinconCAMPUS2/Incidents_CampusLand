@@ -3,7 +3,8 @@ import NavbarHome from './NavbarHome';
 import HeaderHome from './HeaderHome';
 import ContentHome from './contentHome';
 import FeaturesHome from './FeaturesHome';
-import Roles from './Roles';
+import RolesHome from './RolesHome';
+import JoinUsHome from './JoinUsHome';
 
 import { PropTypes } from 'prop-types';
 import LinearProgress from '@mui/material/LinearProgress';
@@ -47,11 +48,14 @@ export default function Home() {
                 <LinearProgress color="warning" />
             </Box>
             <div className='Roles'>
-                <Roles/>
+                <RolesHome/>
             </div>
             <Box sx={{ width: '100%' }}>
                 <LinearProgress color="warning" />
             </Box>
+            <div className='JoinUs'>
+                <JoinUsHome/>
+            </div>
         </>
     )
 }
