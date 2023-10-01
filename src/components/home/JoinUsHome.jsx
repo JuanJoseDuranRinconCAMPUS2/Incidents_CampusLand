@@ -21,7 +21,7 @@ export default function JoinUsHome() {
                 justifyContent: 'center' , alignContent:'center', 
                 flexDirection:'column', alignItems: "center",
             }}
-            paddingY={{ xs: 3, sm: 3, md: 12 }}
+            paddingTop={{ xs: 3, sm: 3, md: 12 }}
             >
 
                 <Typography 
