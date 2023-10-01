@@ -1,23 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 import NavbarHome from './NavbarHome';
+import HeaderHome from './HeaderHome';
+import ContentHome from './contentHome';
+import FeaturesHome from './FeaturesHome';
+
 import { PropTypes } from 'prop-types';
-
-import Avatar from '@mui/joy/Avatar';
-import Box from '@mui/joy/Box';
-import Grid from '@mui/joy/Grid';
-import { keyframes } from '@emotion/react';
-import Typography from '@mui/joy/Typography';
-
-
+import LinearProgress from '@mui/material/LinearProgress';
+import { Box } from '@mui/material';
 import '../../../public/homeStyles.css'
 
 
 export default function Home() {
-
-    const typing = keyframes`
-    from { width: 90%; }
-    to { width: 0%; }
-    `; 
 
      useEffect(() => {
     
@@ -25,163 +18,30 @@ export default function Home() {
   
     return (
         <>
+            <Box sx={{ width: '100%' }}>
+                <LinearProgress color="secondary" />
+            </Box>
             <div className='Navbar'>
                 <NavbarHome/>
             </div>
+            <Box sx={{ width: '100%' }}>
+                <LinearProgress color="secondary" />
+            </Box>
+            <div className='content1'>
+                <div className='HeaderHome'>
+                    <HeaderHome/>
+                </div>
 
-            <Box sx={{ flexGrow: 1 , display: { xs: 'flex', md: 'none' } }} className='Header' >
-                <Grid
-                    container
-                    spacing={1}
-                    sx={{
-                        
-                        borderTop: 'var(--Grid-borderWidth) solid',
-                        borderLeft: 'var(--Grid-borderWidth) solid',
-                        borderColor: 'divider',
-                        '& > div': {
-                            borderRight: 'var(--Grid-borderWidth) solid',
-                            borderBottom: 'var(--Grid-borderWidth) solid',
-                            borderColor: 'divider',
-                        },
-                        justifyContent: "center",
-                        alignItems: "center"
-                    }}
-                >
-                        <Grid
-                            key={"TextSection"}
-                            xs={12}
-                            sm={274}
-                            md={3}
-                            display="flex"
-                            flexDirection= "column"
-                            justifyContent="center"
-                            alignItems="center"
-                            minHeight={180}
-                            
-                        >
-                        <Typography
-                            sx={{
-                                mt: 12,
-                                display: 'block',
-                                fontSize: "3rem",
-                                fontWeight: 700,
-                                fontFamily: 'monospace',
-                                color: "#fee0ff",
-                                whiteSpace: 'nowrap',
-                                borderRight: '4px solid',
-                                width: '12ch',
-                                overflow: 'hidden',
-                                animation: `${typing} 5s infinite alternate steps(20)`,
-                            }}
-                        >
-                        Welcome to <br></br>
-                        Incidents!
-                        </Typography>
-                        <Typography 
-                            sx={{
-                                my: 4,
-                                display: 'block',
-                                fontSize: "1.5rem",
-                                textAlign: "center",
-                                fontWeight: 700,
-                                fontFamily: 'monospace',
-                                color: "#ffff",
-                            
-                            }}
-                        >Welcome to Campusland's Incident Management and Administration page! Here you will be able to inform us of any problems you detect in our facilities and, in addition, carry out the management of such incidents efficiently.</Typography>
-                    </Grid>
-                    <Grid
-                        key={"imgSection"}
-                        xs={12}
-                        sm={6}
-                        md={3}
-                        display="flex"
-                        flexDirection={"column"}
-                        justifyContent="center"
-                        alignItems="center"
-                        minHeight={180}
-                    >
-                        <img src='https://radiogalena.ar/wp-content/uploads/2022/03/modificado-creo.gif' loading="lazy" height={400}/>
-                    </Grid>
-                </Grid>
-                </Box>
-                <Box sx={{ flexGrow: 1 , display: { xs: 'none', md: 'flex' } }} className='Header' >
-                <Grid
-                    container
-                    spacing={1}
-                    gap={20}
-                    sx={{
-                    borderTop: 'var(--Grid-borderWidth) solid',
-                    borderLeft: 'var(--Grid-borderWidth) solid',
-                    borderColor: 'divider',
-                    '& > div': {
-                        borderRight: 'var(--Grid-borderWidth) solid',
-                        borderBottom: 'var(--Grid-borderWidth) solid',
-                        borderColor: 'divider',
-                    },
-                    justifyContent: "center",
-                    alignItems: "center"
-                    }}
-                >
-                        <Grid
-                            key={"textSection"}
-                            xs={12}
-                            sm={274}
-                            md={3}
-                            paddingY={15}
-                            display="flex"
-                            flexDirection= "column"
-                            justifyContent="center"
-                            alignItems="center"
-                            minHeight={180}
-                            
-                        >
-                        <Typography
-                            sx={{
-                            
-                                display: 'block',
-                                fontSize: "3rem",
-                                fontWeight: 700,
-                                fontFamily: 'monospace',
-                                color: "#fee0ff",
-                                whiteSpace: 'nowrap',
-                                borderRight: '4px solid',
-                                overflow: 'hidden',
-                                animation: `${typing} 5s infinite alternate steps(20)`,
-                            }}
-                        >
-                        Welcome to <br></br>
-                        Incidents!
-                        </Typography>
-                        <Typography 
-                            sx={{
-                                my: 4,
-                                display: 'block',
-                                fontSize: "1.2rem",
-                                textAlign: "center",
-                                fontWeight: 700,
-                                fontFamily: 'monospace',
-                                color: "#ffff",
-                            
-                            }}
-                        >Welcome to Campusland's Incident Management and Administration page! Here you will be able to inform us of any problems you detect in our facilities and, in addition, carry out the management of such incidents efficiently.</Typography>
-                    </Grid>
-                    <Grid
-                        key={"imgSection"}
-                        xs={12}
-                        sm={6}
-                        md={3}
-                        display="flex"
-                        flexDirection={"column"}
-                        justifyContent="center"
-                        alignItems="center"
-                        minHeight={180}
-                    >
-                        <img src='https://radiogalena.ar/wp-content/uploads/2022/03/modificado-creo.gif' loading="lazy" />
-                    </Grid>
-                </Grid>
-                </Box>
-        
+                <div className='contentHome'>
+                    <ContentHome/>
+            </div>
+            </div>
+            <Box sx={{ width: '100%' }}>
+                <LinearProgress color="success" />
+            </Box>
+            <div className='Features'>
+                <FeaturesHome/>
+            </div>
         </>
     )
 }
