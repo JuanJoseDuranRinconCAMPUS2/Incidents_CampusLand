@@ -5,6 +5,7 @@ import ContentHome from './contentHome';
 import FeaturesHome from './FeaturesHome';
 import RolesHome from './RolesHome';
 import JoinUsHome from './JoinUsHome';
+import FooterHome from './FooterHome';
 
 import { PropTypes } from 'prop-types';
 import LinearProgress from '@mui/material/LinearProgress';
@@ -55,6 +56,9 @@ export default function Home() {
             </Box>
             <div className='JoinUs'>
                 <JoinUsHome/>
+            </div>
+            <div className='FooterHome'>
+                <FooterHome/>
             </div>
         </>
     )
