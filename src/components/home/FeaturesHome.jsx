@@ -18,7 +18,7 @@ export default function FeaturesHome() {
   
     return (
         <>
-            <Box sx={{ flexGrow: 1 , display: { xs: 'flex', md: 'flex' }}}>
+            <Box sx={{ flexGrow: 1 , display: { xs: 'flex', md: 'flex' }, justifyContent: 'center' , alignContent:'center'}}>
                 <Grid
                     container
                     spacing={1}
