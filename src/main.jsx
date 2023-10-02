@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 
 import Home from './components/home/Home';
+import SignUpForm from './components/signUp/SignUpForm';
 import Error404 from './components/error404';
 
 const root = createBrowserRouter([
@@ -10,6 +11,10 @@ const root = createBrowserRouter([
     path: "/",
     element: <Home/>,
    
+  },
+  {
+    path: "/SignUp",
+    element: <SignUpForm/>,
   },
 
   {
