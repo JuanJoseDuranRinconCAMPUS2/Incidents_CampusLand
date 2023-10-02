@@ -175,7 +175,7 @@ export default function SignUpForm() {
         sx={{
           flexGrow: 1,
           display: "flex",
-          bgcolor: "#a976c3",
+          bgcolor: "#f4e6ff",
           borderRadius: "2%",
           justifyContent: "center",
           alignContent: "center",
@@ -270,7 +270,7 @@ export default function SignUpForm() {
                 textAlign: "center",
                 fontWeight: 700,
                 fontFamily: 'monospace',
-                color: '#f4e6ff'
+                color: '#331d36'
                 }}
                         >Have an account?{" "}
                         <Link to={`/SignIn`} id="Signin">
@@ -294,7 +294,7 @@ export default function SignUpForm() {
           >
             <form className="form" onSubmit={eventSubmit}>
               <Box sx={{ my: "10px" }}>
-                <Avatar sx={{ bgcolor: "#f4e6ff" }}>
+                <Avatar sx={{ bgcolor: "#a976c3" }}>
                   <AccountCircle sx={{ color: "#252422" }} />
                 </Avatar>
                 <TextField
@@ -323,7 +323,7 @@ export default function SignUpForm() {
                 </Typography>
               </Box>
               <Box sx={{ my: "10px" }}>
-                <Avatar sx={{ bgcolor: "#f4e6ff" }}>
+                <Avatar sx={{ bgcolor: "#a976c3" }}>
                   <EmailIcon sx={{ color: "#252422" }} />
                 </Avatar>
                 <TextField
@@ -353,7 +353,7 @@ export default function SignUpForm() {
               </Box>
               <Box display="flex" flexDirection="row" gap={"10%"}>
                 <Box sx={{ my: "10px" }}>
-                  <Avatar sx={{ bgcolor: "#f4e6ff" }}>
+                  <Avatar sx={{ bgcolor: "#a976c3" }}>
                     <DocumentScannerIcon sx={{ color: "#252422" }} />
                   </Avatar>
                   <InputLabel id="DT">Document type</InputLabel>
@@ -386,7 +386,7 @@ export default function SignUpForm() {
                   </Typography>
                 </Box>
                 <Box sx={{ my: "10px" }}>
-                  <Avatar sx={{ bgcolor: "#f4e6ff" }}>
+                  <Avatar sx={{ bgcolor: "#a976c3" }}>
                     <DocumentScannerIcon sx={{ color: "#252422" }} />
                   </Avatar>
                   <InputLabel id="DT">Gender</InputLabel>
@@ -420,7 +420,7 @@ export default function SignUpForm() {
                 </Box>
               </Box>
               <Box sx={{ my: "10px" }}>
-                <Avatar sx={{ bgcolor: "#f4e6ff" }}>
+                <Avatar sx={{ bgcolor: "#a976c3" }}>
                   <AssignmentIndIcon sx={{ color: "#252422" }} />
                 </Avatar>
                 <TextField
@@ -452,7 +452,7 @@ export default function SignUpForm() {
                 </Typography>
               </Box>
               <Box sx={{ my: "10px" }}>
-                <Avatar sx={{ bgcolor: "#f4e6ff" }}>
+                <Avatar sx={{ bgcolor: "#a976c3" }}>
                   <TodayIcon sx={{ color: "#252422" }} />
                 </Avatar>
                 <TextField
@@ -485,7 +485,7 @@ export default function SignUpForm() {
                 </Typography>
               </Box>
               <Box sx={{ my: "10px" }}>
-                <Avatar sx={{ bgcolor: "#f4e6ff" }}>
+                <Avatar sx={{ bgcolor: "#a976c3" }}>
                   <PhoneAndroidIcon sx={{ color: "#252422" }} />
                 </Avatar>
                 <TextField
@@ -518,7 +518,7 @@ export default function SignUpForm() {
               </Box>
               <Box display="flex" flexDirection="row" gap={"10%"}>
                 <Box sx={{ my: "10px" }}>
-                  <Avatar sx={{ bgcolor: "#f4e6ff" }}>
+                  <Avatar sx={{ bgcolor: "#a976c3" }}>
                     <SettingsRemoteIcon sx={{ color: "#252422" }} />
                   </Avatar>
                   <InputLabel id="Rol">Rol User</InputLabel>
@@ -537,7 +537,7 @@ export default function SignUpForm() {
                   </Select>
                 </Box>
                 <Box sx={{ my: "10px" }}>
-                  <Avatar sx={{ bgcolor: "#f4e6ff" }}>
+                  <Avatar sx={{ bgcolor: "#a976c3" }}>
                     <ClassIcon sx={{ color: "#252422" }} />
                   </Avatar>
                   <InputLabel id="DT">Classroom</InputLabel>
@@ -563,7 +563,7 @@ export default function SignUpForm() {
                 </Box>
               </Box>
               <Box sx={{ my: "10px" }}>
-                <Avatar sx={{ bgcolor: "#f4e6ff" }}>
+                <Avatar sx={{ bgcolor: "#a976c3" }}>
                   <PhoneAndroidIcon sx={{ color: "#252422" }} />
                 </Avatar>
                 <InputLabel htmlFor="outlined-adornment-password">
@@ -635,8 +635,8 @@ export default function SignUpForm() {
                   {errors.Newpassword?.message}
                 </Typography>
               </Box>
-              <Button variant="contained" className="button" type="submit" endIcon={<SendIcon />} color="success" sx={{justifyContent: "center",
-              alignContent: "center", display: "flex"}}>
+              <Button variant="contained" className="button" type="submit" endIcon={<SendIcon />} sx={{justifyContent: "center",
+              alignContent: "center", display: "flex", bgcolor:"#a976c3"}}>
                 Send
               </Button>
             </form>
