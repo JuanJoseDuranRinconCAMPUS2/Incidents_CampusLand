@@ -114,7 +114,19 @@ export default function SignUpForm() {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ mode: "all", resolver: yupResolver(schema) });
+    reset,
+  } = useForm(
+    { mode: "all", 
+    resolver: yupResolver(schema),
+    defaultValues: {  
+      Username: "",
+      Email: "",
+      Identification: "",
+      Age: "",
+      Celphone: "",
+      Password: "",
+      Newpassword: "",
+    }, });
   const [typeDoc, setTypeDoc] = React.useState("");
   const [Gender, setGender] = React.useState("");
   const [Rol, setRol] = React.useState("");
@@ -141,6 +153,18 @@ export default function SignUpForm() {
     event.preventDefault();
   };
 
+  const resetForm = () => {
+    reset({
+      Username: "",
+      Email: "",
+      Identification: "",
+      Age: "",
+      Celphone: "",
+      Password: "",
+      Newpassword: "",
+    });
+  };
+
   const eventSubmit = (event) => {
     event.preventDefault();
       handleSubmit((data) => {
@@ -159,6 +183,9 @@ export default function SignUpForm() {
       console.error(error);
     } finally {
       setIsLoading(false);
+      setTimeout(() => {
+        navigate("/SignIn");
+      }, 1000);
     }
   };
 
