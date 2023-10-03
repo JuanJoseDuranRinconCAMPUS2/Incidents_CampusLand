@@ -327,6 +327,21 @@ export default function SignInForm() {
                   {errors.Password?.message}
                 </Typography>
               </Box>
+              <Typography 
+              sx={{
+                my: 4,
+                opacity: 0.9,
+                display: 'block',
+                fontSize: "1.2rem",
+                textAlign: "center",
+                fontWeight: 700,
+                fontFamily: 'monospace',
+                color: '#331d36'
+                }}
+                        >
+                        <Link to={`/RecoveryPassword`} id="SingUp">
+                          Forgot password?
+                        </Link></Typography>
               <Button variant="contained" className="button" type="submit" endIcon={<LoginIcon />} sx={{justifyContent: "center",
               alignContent: "center", display: "flex", bgcolor:"#a976c3"}}>
                 Login
