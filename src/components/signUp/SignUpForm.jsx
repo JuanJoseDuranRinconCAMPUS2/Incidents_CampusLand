@@ -153,18 +153,6 @@ export default function SignUpForm() {
     event.preventDefault();
   };
 
-  const resetForm = () => {
-    reset({
-      Username: "",
-      Email: "",
-      Identification: "",
-      Age: "",
-      Celphone: "",
-      Password: "",
-      Newpassword: "",
-    });
-  };
-
   const eventSubmit = (event) => {
     event.preventDefault();
       handleSubmit((data) => {
@@ -202,7 +190,9 @@ export default function SignUpForm() {
         sx={{
           flexGrow: 1,
           display: "flex",
-          bgcolor: "#f4e6ff",
+          background: 'linear-gradient(rgba(244, 230, 255, 0.8), rgba(244, 230, 255, 0.8)), url("https://i.pinimg.com/originals/35/53/6c/35536ca602b93303937e57cba1f6707d.gif")', 
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
           borderRadius: "2%",
           justifyContent: "center",
           alignContent: "center",
