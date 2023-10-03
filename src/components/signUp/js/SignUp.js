@@ -1,4 +1,5 @@
 import { UserCreation } from "../../../services/UserCreation";
+import { modalError , modalSignUp } from "../../modalTemplates";
 
 export let userCreation = async (data, onProgress)=>{
     let { 
@@ -52,6 +53,14 @@ export let userCreation = async (data, onProgress)=>{
         versions_User: [ "1.0.0", "1.0.1", "1.0.2", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0", "1.6.0", "1.7.0"]
     }
     let response = await UserCreation(User, onProgress);
-
-    console.log(response);
+    switch (response.statusText) {
+        case "OK":
+            modalSignUp(response);
+            break;
+    
+        default:
+            modalError(response);
+            break;
+    }
+    return response
 }
