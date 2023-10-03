@@ -40,7 +40,7 @@ export default function FooterHome() {
                     }}
                 >
                     <Grid
-                        key={"textSection"}
+                        key={"textSection4"}
                         xs={12}
                         sm={10}
                         md={5}
@@ -87,7 +87,7 @@ export default function FooterHome() {
                               the process of reporting and managing incidents effectively.</Typography>
                     </Grid>
                     <Grid
-                        key={"campusSection"}
+                        key={"campusSection6"}
                         xs={12}
                         sm={10}
                         md={3}
@@ -133,7 +133,7 @@ export default function FooterHome() {
                        
                     </Grid>
                     <Grid
-                        key={"campusSection"}
+                        key={"campusSection5"}
                         xs={12}
                         sm={10}
                         md={5}
@@ -163,7 +163,7 @@ export default function FooterHome() {
                             Copyright © 2023 All Rights Reserved by JuanJoseDuranRincon.</Typography>
                     </Grid>
                     <Grid
-                        key={"campusSection"}
+                        key={"campusSection3"}
                         xs={12}
                         sm={10}
                         md={3}

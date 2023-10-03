@@ -39,7 +39,7 @@ export default function HeaderHome() {
                     }}
                 >
                         <Grid
-                            key={"textSection"}
+                            key={"textSection5"}
                             xs={12}
                             sm={274}
                             md={5}

@@ -51,7 +51,7 @@ export default function RolesHome() {
                     }}
                 >
                     <Grid
-                        key={"textSection"}
+                        key={"textSection6"}
                         xs={12}
                         sm={10}
                         md={4}
@@ -125,7 +125,7 @@ export default function RolesHome() {
                         </List>
                     </Grid>
                     <Grid
-                        key={"campusSection"}
+                        key={"campusSection7"}
                         xs={12}
                         sm={10}
                         md={4}

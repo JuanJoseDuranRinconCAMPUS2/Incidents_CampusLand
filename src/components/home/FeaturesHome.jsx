@@ -38,7 +38,7 @@ export default function FeaturesHome() {
                     }}
                 >
                     <Grid
-                        key={"campusSection"}
+                        key={"campusSection2"}
                         xs={12}
                         sm={10}
                         md={3}
@@ -70,7 +70,7 @@ export default function FeaturesHome() {
                         </Card>
                     </Grid>
                     <Grid
-                        key={"textSection"}
+                        key={"textSection2"}
                         xs={12}
                         sm={6}
                         md={3}
@@ -102,7 +102,7 @@ export default function FeaturesHome() {
                         </Card>
                     </Grid>
                     <Grid
-                        key={"textSection"}
+                        key={"textSection3"}
                         xs={12}
                         sm={6}
                         md={3}
