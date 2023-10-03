@@ -167,7 +167,7 @@ export default function SignInForm() {
           }}
           className="underline"
         >
-          Sign Up!
+          Sign In!
         </Typography>
         <Grid
           container
