@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 
 import Home from './components/home/Home';
 import SignUpForm from './components/signUp/SignUpForm';
+import SignInForm from './components/signIn/SignInForm';
 import Error404 from './components/error404';
 import ModalInfo from './components/ModalInfo';
 
@@ -17,7 +18,10 @@ const root = createBrowserRouter([
     path: "/SignUp",
     element: <SignUpForm/>,
   },
-
+  {
+    path: "/SignIn",
+    element: <SignInForm/>,
+  },
   {
     path: "*",
     element: <Error404/>,
