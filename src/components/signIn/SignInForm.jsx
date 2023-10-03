@@ -110,21 +110,25 @@ export default function SignInForm() {
   const eventSubmit = (event) => {
     event.preventDefault();
       handleSubmit((data) => {
-        loadingAnConnect(data)
+        loadingAndConnect(data)
       })();
   }
 
-  const loadingAnConnect = async (data) => {
+  const loadingAndConnect = async (data) => {
     setIsLoading(true);
     setProgress(0);
+    let response;
     try {
-      const response = await loginUser(data , (progress) => {
+      response = await loginUser(data , (progress) => {
         setProgress(progress);
       });
     } catch (error) {
       console.error(error);
     } finally {
       setIsLoading(false);
+      if (response) {
+        navigate(`/${response}`);
+      }
     }
   };
 
