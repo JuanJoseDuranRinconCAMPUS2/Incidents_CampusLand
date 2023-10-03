@@ -18,6 +18,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
+import LogoutIcon from '@mui/icons-material/Logout';
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import TodayIcon from "@mui/icons-material/Today";
@@ -203,7 +204,7 @@ export default function SignUpForm() {
       >
         <Typography
           sx={{
-            display: "inline-block",
+            display: "flex",
             position: "relative",
             fontSize: "3rem",
             fontWeight: 700,
@@ -217,6 +218,11 @@ export default function SignUpForm() {
           }}
           className="underline"
         >
+          <Link to={`/`} id="goHome">
+            <Avatar sx={{ bgcolor: "#a976c3", my: '40%' , marginRight: '5px'}}>
+                  <LogoutIcon sx={{ color: "#fffef" }} />
+            </Avatar>
+          </Link>
           Sign Up!
         </Typography>
         <Grid

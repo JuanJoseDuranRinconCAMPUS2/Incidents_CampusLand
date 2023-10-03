@@ -5,6 +5,7 @@ import { loginUser } from "./js/SignIn";
 import Box from "@mui/material/Box";
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from "@mui/material/Typography";
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Grid } from "@mui/material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import ImageList from "@mui/material/ImageList";
@@ -153,7 +154,7 @@ export default function SignInForm() {
       >
         <Typography
           sx={{
-            display: "inline-block",
+            display: "flex",
             position: "relative",
             fontSize: "3rem",
             fontWeight: 700,
@@ -167,6 +168,12 @@ export default function SignInForm() {
           }}
           className="underline"
         >
+          <Link to={`/`} id="goHome">
+            <Avatar sx={{ bgcolor: "#a976c3", my: '40%' , marginRight: '5px'}}>
+                  <LogoutIcon sx={{ color: "#fffef" }} />
+            </Avatar>
+          </Link>
+          {" "}
           Sign In!
         </Typography>
         <Grid
