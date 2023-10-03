@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import Home from './components/home/Home';
 import SignUpForm from './components/signUp/SignUpForm';
 import SignInForm from './components/signIn/SignInForm';
+import RecoveryCodeForm from './components/recoveryPassword/RecoveryCodeForm';
+import NewPasswordForm from './components/newPassword/newPasswordForm';
 import Error404 from './components/error404';
 import ModalInfo from './components/ModalInfo';
 
@@ -17,6 +19,16 @@ const root = createBrowserRouter([
   {
     path: "/SignUp",
     element: <SignUpForm/>,
+  },
+  {
+    path: "/RecoveryPassword",
+    element: <RecoveryCodeForm/>,
+    children: [
+      {
+        path: "NewPasswordVerification",
+        element: <NewPasswordForm/>
+      }
+    ]
   },
   {
     path: "/SignIn",
