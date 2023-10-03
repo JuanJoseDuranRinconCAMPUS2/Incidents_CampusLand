@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
 
 export default function JoinUsHome() {
@@ -75,10 +76,11 @@ export default function JoinUsHome() {
                                 justifyContent: 'center',
                             }}
                         />
-               
-                        <button className='JoinUsB'>
-                            Sign Up
-                        </button>
+                        <Link to={'/SignIn'}>
+                            <button className='JoinUsB'>
+                                Sign Up
+                            </button>
+                        </Link>
             </Box>  
         </>
     )
