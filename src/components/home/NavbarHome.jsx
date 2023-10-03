@@ -14,9 +14,19 @@ import MenuItem from '@mui/material/MenuItem';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import LoginIcon from '@mui/icons-material/Login';
 
-const pages = ['Home', 'Campusland'];
-const settings = ['Sign up', 'Sign in'];
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
+const pages = ['Home', 'Campusland'];
+const settings = [
+  {
+    name: "Sign Up",
+    link: "/SignUp"
+  },
+  {
+    name: "Sign In",
+    link: "/SignIn"
+  }
+]
 function NavbarHome() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -167,15 +177,17 @@ function NavbarHome() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center"
-                  sx={{
-                    mr: 2,
-                    fontWeight: 720,
-                    color: '#3f6d4e',
-                    textDecoration: 'none',
-                  }}
-                  >{setting}</Typography>
+                <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                  <Link to={setting.link}>
+                    <Typography textAlign="center"
+                      sx={{
+                        mr: 2,
+                        fontWeight: 720,
+                        color: '#3f6d4e',
+                        textDecoration: 'none',
+                      }}
+                    >{setting.name}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
