@@ -202,6 +202,11 @@ export default function SignUpForm() {
           m: "2%",
         }}
       >
+        <Link to={`/`} id="goHome">
+            <Avatar sx={{ bgcolor: "#a976c3", my: '40%' , marginRight: '5px'}}>
+                  <LogoutIcon sx={{ color: "#fffef" }} />
+            </Avatar>
+        </Link>
         <Typography
           sx={{
             display: "flex",
@@ -218,11 +223,6 @@ export default function SignUpForm() {
           }}
           className="underline"
         >
-          <Link to={`/`} id="goHome">
-            <Avatar sx={{ bgcolor: "#a976c3", my: '40%' , marginRight: '5px'}}>
-                  <LogoutIcon sx={{ color: "#fffef" }} />
-            </Avatar>
-          </Link>
           Sign Up!
         </Typography>
         <Grid
