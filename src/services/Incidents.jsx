@@ -10,12 +10,16 @@ let url = `http://${import.meta.env.VITE_HOSTNAME}:${import.meta.env.VITE_PORT_B
 // 1.4.0 = get incidents per priority
 // 1.5.0 = get incidents per type
 // 1.6.0 = get incidents per PC
-export let getIncidents = async (User, onProgress, version)=>{
+export let getIncidents = async (User, onProgress, token, version)=>{
     try{
-        const response = await axios.post(url, User, {
+        const response = await axios.get(url, {
             headers: {
                 'content-Type': 'application/json',
-                'Accept-Version': version
+                'Accept-Version': version,
+                'Authorization' : token,
+            },
+            params: {
+                id: User
             },
             onUploadProgress: (progressEvent) => {
                 const progress = (progressEvent.loaded / progressEvent.total) * 100;
@@ -31,11 +35,12 @@ export let getIncidents = async (User, onProgress, version)=>{
 // 1.0.0 = total incidents
 // 1.1.0 = total incidents per Classroom
 // 1.2.0 = total incidents per Area
-export let totalIncidents = async (User, onProgress, version)=>{
+export let totalIncidents = async (User, onProgress, token, version)=>{
     try{
-        const response = await axios.post(`${url}/total-incidents`, User, {
+        const response = await axios.get(`${url}/total-incidents`, User, {
             headers: {
                 'content-Type': 'application/json',
+                'Authorization' : `${token}`,
                 'Accept-Version': version
             },
             onUploadProgress: (progressEvent) => {
