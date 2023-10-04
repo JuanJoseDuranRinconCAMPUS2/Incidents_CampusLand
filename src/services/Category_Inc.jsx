@@ -10,9 +10,6 @@ export let getCategory_Inc = async (onProgress, token)=>{
                 'Accept-Version': '1.0.0',
                 'Authorization' : token,
             },
-            params: {
-                id: User
-            },
             onUploadProgress: (progressEvent) => {
                 const progress = (progressEvent.loaded / progressEvent.total) * 100;
                 onProgress(progress);
