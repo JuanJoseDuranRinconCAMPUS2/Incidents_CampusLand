@@ -127,7 +127,7 @@ export default function SignInForm() {
     } finally {
       setIsLoading(false);
       if (response) {
-        navigate(`/${response}`);
+        navigate(`/Manager/${response}`);
       }
     }
   };
