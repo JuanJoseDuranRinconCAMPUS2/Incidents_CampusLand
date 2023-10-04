@@ -272,7 +272,7 @@ export default function CamperManager() {
           {list("left")}
         </Drawer>
       </React.Fragment>
-      <Outlet />
+      <Outlet context={token}/>
     </>
   );
 }
