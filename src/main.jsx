@@ -8,6 +8,8 @@ import SignInForm from './components/signIn/SignInForm';
 import RecoveryCodeForm from './components/recoveryPassword/RecoveryCodeForm';
 import NewPasswordForm from './components/newPassword/newPasswordForm';
 import CamperManager from './components/incidentManager/camperManager/CamperManager';
+import CmHome from './components/incidentManager/camperManager/CmHome';
+import CmMyIncidents from './components/incidentManager/camperManager/CmMyIncidents';
 
 import Error404 from './components/error404';
 import ModalInfo from './components/ModalInfo';
@@ -35,6 +37,16 @@ const root = createBrowserRouter([
   {
     path: "/Manager/Camper",
     element: <CamperManager/>,
+    children: [
+      {
+        path: "Home",
+        element: <CmHome/>
+      },
+      {
+        path: "myIncidents",
+        element: <CmMyIncidents/>
+      }
+    ]
   },
   {
     path: "/SignIn",
