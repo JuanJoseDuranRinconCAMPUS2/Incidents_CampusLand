@@ -3,43 +3,47 @@ import { PropTypes } from "prop-types";
 import { getIncidentsCon } from "./js/ParseMyIncidents.JS";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 
 import { Link, Outlet, useOutletContext, useNavigate } from "react-router-dom";
 
 function CircularProgressWithLabel(props) {
-    return (
-      <Box sx={{ position: 'relative', display: 'inline-flex'}}>
-        <CircularProgress variant="determinate"  size={200} {...props} />
-        <Box
-          sx={{
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            position: 'absolute',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Typography variant="caption" component="div" color="text.secondary"
+  return (
+    <Box sx={{ position: "relative", display: "inline-flex" }}>
+      <CircularProgress variant="determinate" size={200} {...props} />
+      <Box
+        sx={{
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+          position: "absolute",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Typography
+          variant="caption"
+          component="div"
+          color="text.secondary"
           sx={{
             my: 4,
             opacity: 0.9,
-            display: 'block',
+            display: "block",
             fontSize: "4rem",
             textAlign: "center",
             fontWeight: 700,
-            fontFamily: 'monospace',
-            color: '#f4e6ff'
-            }} >
-            {`${Math.round(props.value)}%`}
-          </Typography>
-        </Box>
+            fontFamily: "monospace",
+            color: "#f4e6ff",
+          }}
+        >
+          {`${Math.round(props.value)}%`}
+        </Typography>
       </Box>
-    );
-  }
+    </Box>
+  );
+}
 export default function CmMyIncidents() {
   let UserLocal = JSON.parse(localStorage.getItem("myUserInfo"));
   let Token = useOutletContext();
@@ -50,33 +54,37 @@ export default function CmMyIncidents() {
   let count = 0;
 
   const requestToken = async (data) => {
-    try {
-      const response = await  getIncidentsCon(data , (progress) => {
-        setProgress(progress);
-      }, Token,'1.1.0');
-      if (response == false){
-        navigate("/")
+      setIsLoading(true);
+      setProgress(0);
+      let response;
+      try {
+        response = await await getIncidentsCon(
+          data,(progress) => {setProgress(progress);},Token,"1.1.0"
+        );
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+        if (response == false) {
+          navigate("/");
+        }
       }
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   useEffect(() => {
     if (count <= 0) {
-        if (!Token) {
-            navigate("/Manager/Camper/Home")
-        } else {
-            requestToken(UserLocal.idUser);  
-        }
-        count++
+      if (!Token) {
+        navigate("/Manager/Camper/Home");
+      } else {
+        requestToken(UserLocal.idUser);
+      }
+      count++;
     }
-   
   }, []);
 
   return (
     <>
-    {isLoading && (
+      {isLoading && (
         <div className="loading">
           <CircularProgressWithLabel value={progress} />
         </div>
