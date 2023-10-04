@@ -115,6 +115,8 @@ export default function CamperManager() {
       UserLocal.roles === ""
     ) {
       navigate("/");
+    } else if (UserLocal.roles[0] != "Camper"){
+      navigate("/");
     } else {
       requestToken(UserLocal.idUser);
     }
