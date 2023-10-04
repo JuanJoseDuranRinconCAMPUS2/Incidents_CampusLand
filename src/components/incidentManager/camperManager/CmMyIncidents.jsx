@@ -9,6 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import PostAddIcon from '@mui/icons-material/PostAdd';
+import { DataGrid } from '@mui/x-data-grid';
 import { CardActionArea } from "@mui/material";
 
 import { Link, Outlet, useOutletContext, useNavigate } from "react-router-dom";
@@ -50,12 +51,72 @@ function CircularProgressWithLabel(props) {
     </Box>
   );
 }
+
+const columns = [
+  { field: 'id', headerName: 'ID', width: 90 },
+  {
+    field: 'Inc_Creation_Date',
+    headerName: 'Creation_Date',
+    width: 190,
+    editable: false,
+  },
+  {
+    field: 'Inc_Area',
+    headerName: 'Area',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'Inc_Classroom',
+    headerName: 'Classroom',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'Inc_Category',
+    headerName: 'Category',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'Inc_Type',
+    headerName: 'Type',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'Inc_Status',
+    headerName: 'Status',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'Inc_PC',
+    headerName: 'Pc',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'Inc_Peripheral',
+    headerName: 'Peripheral',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'Inc_Desc_Solution',
+    headerName: 'Solution',
+    width: 150,
+    editable: false,
+  },
+];
+
 export default function CmMyIncidents() {
   let UserLocal = JSON.parse(localStorage.getItem("myUserInfo"));
   let Token = useOutletContext();
   const [isLoading, setIsLoading] = useState(false);
   const [isDataNull, setIsDataNull] = useState(false);
   const [isData, setIsData] = useState(false);
+  const [Response, setResponse] = useState({});
   const [progress, setProgress] = React.useState(10);
   const navigate = useNavigate();
   let count = 0;
@@ -75,9 +136,9 @@ export default function CmMyIncidents() {
         if (response.length == 0) {
           setIsDataNull(true)
         }else{
-          tablecreation(response)
+          setIsData(true);
+          setResponse(response)
         }
-        console.log(response);
         if (response === false) {
           navigate("/");
         }
@@ -183,6 +244,25 @@ export default function CmMyIncidents() {
             </Card>
         </Box>
       )}
+
+        {isData && (
+           <Box sx={{ height: 400, width: '100%' }}>
+            <DataGrid
+              rows={Response}
+              columns={columns}
+              initialState={{
+                pagination: {
+                  paginationModel: {
+                    pageSize: 10,
+                  },
+                },
+              }}
+              pageSizeOptions={[5, 10, 25, 50, 100]}
+              checkboxSelection
+              disableRowSelectionOnClick
+            />
+         </Box>
+        )}
       </Box>
       <Outlet />
     </>
