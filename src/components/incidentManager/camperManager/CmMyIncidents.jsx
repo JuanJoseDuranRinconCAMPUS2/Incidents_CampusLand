@@ -144,9 +144,6 @@ export default function CmMyIncidents() {
         }
       }
   };
-  async function tablecreation (Incidents) {
-      
-  }
   useEffect(() => {
     if (count <= 0) {
       if (!Token) {
