@@ -24,7 +24,7 @@ function updateNames(Incidents, items, propertyToUpdate, idProperty, namePropert
 
 export let getIncidentsCon = async (User, onProgress, token, version)=>{
   
-    let response = await getIncidents(2, onProgress, token, version);
+    let response = await getIncidents(User, onProgress, token, version);
     switch (response.statusText) {
         case "OK":
             let {data:Areas} = await getAreas(onProgress, token);
