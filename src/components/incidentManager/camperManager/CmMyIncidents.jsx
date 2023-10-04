@@ -4,6 +4,12 @@ import { getIncidentsCon } from "./js/ParseMyIncidents.JS";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
+import Card from "@mui/material/Card";
+import Avatar from "@mui/material/Avatar";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import { CardActionArea } from "@mui/material";
 
 import { Link, Outlet, useOutletContext, useNavigate } from "react-router-dom";
 
@@ -48,6 +54,7 @@ export default function CmMyIncidents() {
   let UserLocal = JSON.parse(localStorage.getItem("myUserInfo"));
   let Token = useOutletContext();
   const [isLoading, setIsLoading] = useState(false);
+  const [isDataNull, setIsDataNull] = useState(false);
   const [isData, setIsData] = useState(false);
   const [progress, setProgress] = React.useState(10);
   const navigate = useNavigate();
@@ -65,12 +72,20 @@ export default function CmMyIncidents() {
         console.error(error);
       } finally {
         setIsLoading(false);
-        if (response == false) {
+        if (response.length == 0) {
+          setIsDataNull(true)
+        }else{
+          tablecreation(response)
+        }
+        console.log(response);
+        if (response === false) {
           navigate("/");
         }
       }
   };
-
+  async function tablecreation (Incidents) {
+      
+  }
   useEffect(() => {
     if (count <= 0) {
       if (!Token) {
@@ -140,6 +155,34 @@ export default function CmMyIncidents() {
         >
           in this space you can see all the incidences you have reported{" "}
         </Typography>
+
+        {isDataNull && (
+        <Box className="notData" sx={{ py: { xs: 3, sm: 3, md: 10 } }}>
+          <Card sx={{ maxWidth: 345}}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image="https://i.pinimg.com/originals/2f/65/d9/2f65d9234895580bab8eb0bb411a413a.gif"
+                  alt="dataNull"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    you have not made any incidence
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                  remember that you can create your incidents from the "Create Incidents" option in the drop-down menu or from the button below.
+                  </Typography>
+                  <Link to={`/Manager/Camper/CreateIncidents`} id="goHome">
+                    <Avatar sx={{ bgcolor: "#a976c3" , marginRight: '5px'}}>
+                          <PostAddIcon sx={{ color: "#fffef" }} />
+                    </Avatar>
+                  </Link>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+        </Box>
+      )}
       </Box>
       <Outlet />
     </>
