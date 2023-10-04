@@ -19,3 +19,17 @@ export let LoginUser = async (User, onProgress)=>{
         return (error.response);
     }
 }
+
+export let UserToken = async (User)=>{
+    try{
+        const response = await axios.get(`${url}/UserToken/?id=${User}`, {
+            headers: {
+                'content-Type': 'application/json',
+                'Accept-Version': '1.1.0'
+            }
+        });
+        return (response);      
+    }catch(error){
+        return (error.response);
+    }
+}
