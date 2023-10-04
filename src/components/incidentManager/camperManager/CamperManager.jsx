@@ -19,6 +19,7 @@ import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
+import HomeIcon from '@mui/icons-material/Home';
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -33,6 +34,11 @@ import FolderZipIcon from "@mui/icons-material/FolderZip";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const options = [
+  {
+    name: "Home",
+    icon: <HomeIcon />,
+    link: "/Manager/Camper/Home",
+  },
   {
     name: "my Incidents",
     icon: <AssignmentIcon />,
@@ -146,7 +152,7 @@ export default function CamperManager() {
         width: anchor === "top" || anchor === "bottom" ? "auto" : 250,
         height: "100%",
         background:
-          'linear-gradient(rgba(244, 230, 255, 0.8), rgba(244, 230, 255, 0.8)), url("https://i.pinimg.com/originals/e3/35/86/e33586c03737b6558abc873542c2a684.gif")',
+          'linear-gradient(rgba(244, 230, 255, 0.8), rgba(244, 230, 255, 0.4)), url("https://i.pinimg.com/564x/9b/e9/93/9be99396550c6185218760193026407d.jpg")',
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         fontFamily: "monospace",
@@ -266,6 +272,7 @@ export default function CamperManager() {
           {list("left")}
         </Drawer>
       </React.Fragment>
+      <Outlet />
     </>
   );
 }
