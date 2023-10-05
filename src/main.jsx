@@ -11,6 +11,7 @@ import CamperManager from './components/incidentManager/camperManager/CamperMana
 import CmHome from './components/incidentManager/camperManager/CmHome';
 import CmMyIncidents from './components/incidentManager/camperManager/CmMyIncidents';
 import CmIncidents from './components/incidentManager/camperManager/CmIncidents';
+import CmClassroom from './components/incidentManager/camperManager/CmClassroom';
 
 import Error404 from './components/error404';
 import ModalInfo from './components/ModalInfo';
@@ -50,6 +51,10 @@ const root = createBrowserRouter([
       {
         path: "Incidents",
         element: <CmIncidents/>
+      },
+      {
+        path: "classroomIncidents",
+        element: <CmClassroom/>
       }
     ]
   },
