@@ -18,7 +18,7 @@ UserCreation.post('/', postAndPutLimit(900), proxyUserCreation, proxyCreateUser,
     "1.1.0": UserCreationv110
 }))
 
-UserCreation.delete('/deleteUserNotAuthorized', postAndPutLimit(120), proxyValidationTokens(["Admin" , "Camper" , "Trainer"]), proxyUserDeletion, proxyDeleteUser, version({
+UserCreation.post('/deleteUserNotAuthorized', postAndPutLimit(120), proxyValidationTokens(["Admin" , "Camper" , "Trainer"]), proxyUserDeletion, proxyDeleteUser, version({
     "1.1.0": deleteUserNotAuthorizedV110
 }))
 

@@ -48,6 +48,12 @@ proxyCredentialsUser.use(async(req, res, next)=>{
             rolUser.push(rolName.rol);
         }
         
+        if (validateName.Authorization === false) {
+            let mensaje = {status: 409, message: `User: '${data.Name}', you are not verified, wait until a trainer or admin validates you.`};
+            ErrorValidation(res, mensaje);
+            return;
+        }
+        
         req.body.id_User = validateName._id
         req.body.Versions = validateName.Versions
         req.body.Authorization = validateName.Authorization

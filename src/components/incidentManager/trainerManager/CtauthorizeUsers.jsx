@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { PropTypes } from "prop-types";
-import { getIncidentsCon } from "./js/ParseMyIncidents.JS";
+import { DeleteUser } from "./js/DeleteUsers";
+import { AuthorizaUser } from "./js/AuthorizeUsers";
+import { authorizeUsers, getUsersNotAuthorized } from "../../../services/UserCreation";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -9,10 +11,12 @@ import Avatar from "@mui/material/Avatar";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import PostAddIcon from '@mui/icons-material/PostAdd';
+import Button from '@mui/material/Button';
 import { DataGrid } from '@mui/x-data-grid';
 import { CardActionArea } from "@mui/material";
 
 import { Link, Outlet, useOutletContext, useNavigate } from "react-router-dom";
+
 
 function CircularProgressWithLabel(props) {
   return (
@@ -52,65 +56,17 @@ function CircularProgressWithLabel(props) {
   );
 }
 
-const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
-  {
-    field: 'Inc_Creation_Date',
-    headerName: 'Creation_Date',
-    width: 190,
-    editable: false,
-  },
-  {
-    field: 'Inc_Area',
-    headerName: 'Area',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'Inc_Classroom',
-    headerName: 'Classroom',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'Inc_Category',
-    headerName: 'Category',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'Inc_Type',
-    headerName: 'Type',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'Inc_Status',
-    headerName: 'Status',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'Inc_PC',
-    headerName: 'Pc',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'Inc_Peripheral',
-    headerName: 'Peripheral',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'Inc_Description',
-    headerName: 'Description',
-    width: 600,
-    editable: false,
-  },
-];
+function renameIdKey(data) {
+    return data.map((item) => {
+      if (item._id !== undefined) {
+        item.id = item._id;
+        delete item._id;
+      }
+      return item;
+    });
+}
 
-export default function CmMyIncidents() {
+export default function CtauthorizeUsers() {
   let UserLocal = JSON.parse(localStorage.getItem("myUserInfo"));
   let Token = useOutletContext();
   const [isLoading, setIsLoading] = useState(false);
@@ -121,13 +77,78 @@ export default function CmMyIncidents() {
   const navigate = useNavigate();
   let count = 0;
 
+  const handleDelete = async (userName) => {
+    let data = { name_User : userName}
+    const response = await DeleteUser(data, (progress) => {
+        setProgress(progress);
+    }, Token);
+    navigate("/Manager/Trainer/Home");
+};
+const handleAuthorize = async (userName) => {
+    let data = { name_User : userName}
+    const response = await authorizeUsers(data, (progress) => {
+        setProgress(progress);
+    }, Token);
+    navigate("/Manager/Trainer/Home");
+};
+
+
+const columns = [
+  { field: 'id', headerName: 'ID', width: 90 },
+  {
+    field: 'Name',
+    headerName: 'Name User',
+    width: 190,
+    editable: false,
+  },
+  {
+    field: 'Email',
+    headerName: 'Email User',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'Code_Rol',
+    headerName: 'Roles',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'Delete',
+    headerName: 'Delete',
+    width: 200,
+    renderCell: (params) => (
+      <Button
+        variant="contained"
+        color="error"
+        onClick={() => handleDelete(params.row.Name)} 
+      >
+        Delete {params.row.Name}
+      </Button>
+    ),
+  },
+  {
+    field: 'Authorize',
+    headerName: 'Authorize',
+    width: 200,
+    renderCell: (params) => (
+      <Button
+        variant="contained"
+        color="success"
+        onClick={() => handleAuthorize(params.row.Name)} 
+      >
+        Authorize {params.row.Name}
+      </Button>
+    ),
+  }
+];
   const requestToken = async (data) => {
       setIsLoading(true);
       setProgress(0);
       let response;
       try {
-        response = await await getIncidentsCon(
-          data,(progress) => {setProgress(progress);},Token,"1.1.0"
+        response = await await getUsersNotAuthorized(
+          (progress) => {setProgress(progress);},Token,"1.0.0"
         );
       } catch (error) {
         console.error(error);
@@ -136,9 +157,10 @@ export default function CmMyIncidents() {
         if (response.length == 0) {
           setIsDataNull(true)
         }else{
-          setIsData(true);
-          console.log(response);
-          setResponse(response)
+            response = response.data;
+            renameIdKey(response);
+            setIsData(true);
+            setResponse(response)
         }
         if (response === false) {
           navigate("/");
@@ -150,7 +172,7 @@ export default function CmMyIncidents() {
       if (!Token) {
         navigate("/Manager/Camper/Home");
       } else {
-        requestToken(UserLocal.idUser);
+        requestToken();
       }
       count++;
     }
@@ -199,7 +221,7 @@ export default function CmMyIncidents() {
           className="underline"
         >
           {" "}
-          My incidents
+          user authorization system
         </Typography>
         <Typography
           sx={{
@@ -212,7 +234,7 @@ export default function CmMyIncidents() {
             color: "#331d36",
           }}
         >
-          in this space you can see all the incidences you have reported{" "}
+          in this section you can authorize or delete users who have requested to start using the site.{" "}
         </Typography>
 
         {isDataNull && (
@@ -227,7 +249,7 @@ export default function CmMyIncidents() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    you have not made any incidence
+                    No incidents have been recorded so far
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                   remember that you can create your incidents from the "Create Incidents" option in the drop-down menu or from the button below.

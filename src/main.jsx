@@ -10,6 +10,12 @@ import NewPasswordForm from './components/newPassword/newPasswordForm';
 import CamperManager from './components/incidentManager/camperManager/CamperManager';
 import CmHome from './components/incidentManager/camperManager/CmHome';
 import CmMyIncidents from './components/incidentManager/camperManager/CmMyIncidents';
+import CmIncidents from './components/incidentManager/camperManager/CmIncidents';
+import CmClassroom from './components/incidentManager/camperManager/CmClassroom';
+import CmCreateIncidents from './components/incidentManager/camperManager/CmCreateIncidents';
+import TrainerManager from './components/incidentManager/trainerManager/CtManager';
+import CtHome from './components/incidentManager/trainerManager/CtHome';
+import CtauthorizeUsers from './components/incidentManager/trainerManager/CtauthorizeUsers';
 
 import Error404 from './components/error404';
 import ModalInfo from './components/ModalInfo';
@@ -45,6 +51,48 @@ const root = createBrowserRouter([
       {
         path: "myIncidents",
         element: <CmMyIncidents/>
+      },
+      {
+        path: "Incidents",
+        element: <CmIncidents/>
+      },
+      {
+        path: "classroomIncidents",
+        element: <CmClassroom/>
+      },
+      {
+        path: "CreateIncidents",
+        element: <CmCreateIncidents/>
+      }
+    ]
+  },
+  {
+    path: "/Manager/Trainer",
+    element: <TrainerManager/>,
+    children: [
+      {
+        path: "Home",
+        element: <CtHome/>
+      },
+      {
+        path: "myIncidents",
+        element: <CmMyIncidents/>
+      },
+      {
+        path: "Incidents",
+        element: <CmIncidents/>
+      },
+      {
+        path: "classroomIncidents",
+        element: <CmClassroom/>
+      },
+      {
+        path: "CreateIncidents",
+        element: <CmCreateIncidents/>
+      },
+      {
+        path: "authorizeUsers",
+        element: <CtauthorizeUsers/>
       }
     ]
   },

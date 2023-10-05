@@ -103,14 +103,14 @@ const columns = [
     editable: false,
   },
   {
-    field: 'Inc_Description',
-    headerName: 'Description',
-    width: 600,
+    field: 'Inc_Desc_Solution',
+    headerName: 'Solution',
+    width: 150,
     editable: false,
   },
 ];
 
-export default function CmMyIncidents() {
+export default function CmClassroom() {
   let UserLocal = JSON.parse(localStorage.getItem("myUserInfo"));
   let Token = useOutletContext();
   const [isLoading, setIsLoading] = useState(false);
@@ -127,7 +127,7 @@ export default function CmMyIncidents() {
       let response;
       try {
         response = await await getIncidentsCon(
-          data,(progress) => {setProgress(progress);},Token,"1.1.0"
+          data,(progress) => {setProgress(progress);},Token,"1.3.0"
         );
       } catch (error) {
         console.error(error);
@@ -137,7 +137,6 @@ export default function CmMyIncidents() {
           setIsDataNull(true)
         }else{
           setIsData(true);
-          console.log(response);
           setResponse(response)
         }
         if (response === false) {
@@ -150,7 +149,30 @@ export default function CmMyIncidents() {
       if (!Token) {
         navigate("/Manager/Camper/Home");
       } else {
-        requestToken(UserLocal.idUser);
+        let classroom = 1
+
+        switch (UserLocal.roles[1]) {
+            case "M1":
+            case "M2":
+            case "M3":
+                classroom = 2
+            break;
+
+            case "J1":
+            case "J2":
+            case "J3":
+                classroom = 3
+            break;
+
+            case "V1":
+            case "V2":
+                classroom = 4
+            break;
+        
+            default:
+                break;
+        }
+        requestToken(classroom);
       }
       count++;
     }
@@ -198,8 +220,7 @@ export default function CmMyIncidents() {
           }}
           className="underline"
         >
-          {" "}
-          My incidents
+          {!UserLocal ? "Spunikt" : UserLocal.roles[1]} {" "} Incidents
         </Typography>
         <Typography
           sx={{
@@ -212,7 +233,7 @@ export default function CmMyIncidents() {
             color: "#331d36",
           }}
         >
-          in this space you can see all the incidences you have reported{" "}
+          in this space you will see the incidences of your classroom{" "}
         </Typography>
 
         {isDataNull && (
@@ -227,7 +248,7 @@ export default function CmMyIncidents() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    you have not made any incidence
+                    the classroom has no recorded incidents
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                   remember that you can create your incidents from the "Create Incidents" option in the drop-down menu or from the button below.

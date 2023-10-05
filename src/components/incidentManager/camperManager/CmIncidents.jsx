@@ -103,14 +103,14 @@ const columns = [
     editable: false,
   },
   {
-    field: 'Inc_Description',
-    headerName: 'Description',
-    width: 600,
+    field: 'Inc_Desc_Solution',
+    headerName: 'Solution',
+    width: 150,
     editable: false,
   },
 ];
 
-export default function CmMyIncidents() {
+export default function CmIncidents() {
   let UserLocal = JSON.parse(localStorage.getItem("myUserInfo"));
   let Token = useOutletContext();
   const [isLoading, setIsLoading] = useState(false);
@@ -127,7 +127,7 @@ export default function CmMyIncidents() {
       let response;
       try {
         response = await await getIncidentsCon(
-          data,(progress) => {setProgress(progress);},Token,"1.1.0"
+          data,(progress) => {setProgress(progress);},Token,"1.0.0"
         );
       } catch (error) {
         console.error(error);
@@ -137,7 +137,6 @@ export default function CmMyIncidents() {
           setIsDataNull(true)
         }else{
           setIsData(true);
-          console.log(response);
           setResponse(response)
         }
         if (response === false) {
@@ -199,7 +198,7 @@ export default function CmMyIncidents() {
           className="underline"
         >
           {" "}
-          My incidents
+          Incidents
         </Typography>
         <Typography
           sx={{
@@ -212,7 +211,7 @@ export default function CmMyIncidents() {
             color: "#331d36",
           }}
         >
-          in this space you can see all the incidences you have reported{" "}
+          in this space you will be able to see all the reported incidents.{" "}
         </Typography>
 
         {isDataNull && (
@@ -227,7 +226,7 @@ export default function CmMyIncidents() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    you have not made any incidence
+                    No incidents have been recorded so far
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                   remember that you can create your incidents from the "Create Incidents" option in the drop-down menu or from the button below.

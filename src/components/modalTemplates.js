@@ -68,6 +68,81 @@ export let modalSignUp = async (response)=>{
     modal.classList.add('modal--show');
 }
 
+export let modalPost = async (response)=>{
+    
+    const modalUser = document.querySelector(".modal_Info");
+    const modal= document.querySelector(".modal");
+
+    while (modalUser.firstChild) {
+        modalUser.removeChild(modalUser.firstChild);
+    }
+
+    let p1 = response
+    let responseAPI = p1.data;
+
+    const modalU = `
+        <h2 class="modal__title">incidence successfully created!</h2>
+        <h4 class="modal__subTitle">${p1.statusText}</h4>
+        <img src="https://i.pinimg.com/originals/dc/b2/42/dcb242f28517da9d098ee766280fbda8.gif" class="modal__img" alt="imgModal" width="100%"/>
+        <h4 class="modal__subTitle">Message:</h4>
+        <p class="modal__paragraph">the incident has been created correctly.</p>
+    `
+
+    modalUser.insertAdjacentHTML("beforeend", modalU)
+   
+    modal.classList.add('modal--show');
+}
+
+export let modalDelete = async (response)=>{
+    
+    const modalUser = document.querySelector(".modal_Info");
+    const modal= document.querySelector(".modal");
+
+    while (modalUser.firstChild) {
+        modalUser.removeChild(modalUser.firstChild);
+    }
+
+    let p1 = response
+    let responseAPI = p1.data;
+
+    const modalU = `
+        <h2 class="modal__title">the user has been successfully deleted!</h2>
+        <h4 class="modal__subTitle">${p1.statusText}</h4>
+        <img src="https://i.pinimg.com/originals/2f/bd/db/2fbddb1b216a49f0f42d2701e379d7cc.gif" class="modal__img" alt="imgModal" width="100%"/>
+        <h4 class="modal__subTitle">Message:</h4>
+        <p class="modal__paragraph">you have deleted this user, remember that this is an irreversible action.</p>
+    `
+
+    modalUser.insertAdjacentHTML("beforeend", modalU)
+   
+    modal.classList.add('modal--show');
+}
+
+export let modalAutorizate = async (response)=>{
+    
+    const modalUser = document.querySelector(".modal_Info");
+    const modal= document.querySelector(".modal");
+
+    while (modalUser.firstChild) {
+        modalUser.removeChild(modalUser.firstChild);
+    }
+
+    let p1 = response
+    let responseAPI = p1.data;
+
+    const modalU = `
+        <h2 class="modal__title">the user has been successfully validated!</h2>
+        <h4 class="modal__subTitle">${p1.statusText}</h4>
+        <img src="https://i.pinimg.com/originals/dc/b2/42/dcb242f28517da9d098ee766280fbda8.gif" class="modal__img" alt="imgModal" width="100%"/>
+        <h4 class="modal__subTitle">Message:</h4>
+        <p class="modal__paragraph">the user is validated and can now enter the website, an email has been sent informing you that you have been accepted on the website.</p>
+    `
+
+    modalUser.insertAdjacentHTML("beforeend", modalU)
+   
+    modal.classList.add('modal--show');
+}
+
 export let modalSendEmail = async (response)=>{
     
     const modalUser = document.querySelector(".modal_Info");
