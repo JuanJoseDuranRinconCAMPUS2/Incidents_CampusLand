@@ -15,6 +15,8 @@ import CmClassroom from './components/incidentManager/camperManager/CmClassroom'
 import CmCreateIncidents from './components/incidentManager/camperManager/CmCreateIncidents';
 import TrainerManager from './components/incidentManager/trainerManager/CtManager';
 import CtHome from './components/incidentManager/trainerManager/CtHome';
+import CtauthorizeUsers from './components/incidentManager/trainerManager/CtauthorizeUsers';
+
 import Error404 from './components/error404';
 import ModalInfo from './components/ModalInfo';
 
@@ -90,7 +92,7 @@ const root = createBrowserRouter([
       },
       {
         path: "authorizeUsers",
-        element: <CmCreateIncidents/>
+        element: <CtauthorizeUsers/>
       }
     ]
   },
