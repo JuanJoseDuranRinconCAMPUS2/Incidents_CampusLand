@@ -103,9 +103,9 @@ const columns = [
     editable: false,
   },
   {
-    field: 'Inc_Desc_Solution',
-    headerName: 'Solution',
-    width: 150,
+    field: 'Inc_Description',
+    headerName: 'Description',
+    width: 600,
     editable: false,
   },
 ];
@@ -137,6 +137,7 @@ export default function CmMyIncidents() {
           setIsDataNull(true)
         }else{
           setIsData(true);
+          console.log(response);
           setResponse(response)
         }
         if (response === false) {
