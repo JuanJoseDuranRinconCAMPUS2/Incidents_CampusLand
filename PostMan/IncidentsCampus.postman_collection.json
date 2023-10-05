@@ -1,0 +1,2175 @@
+{
+	"info": {
+		"_postman_id": "358451de-7ce3-4d1d-b295-79f22cbcb012",
+		"name": "IncidentsCampus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28495368"
+	},
+	"item": [
+		{
+			"name": "Area",
+			"item": [
+				{
+					"name": "GetArea",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.19.8.7:5174/Area",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Area"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostArea",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Area\" : \"ultra3#\",\r\n  \"description_Area\" : \"conference or meeting rooms and more\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Area",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Area"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutArea",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Area\" : \"ultra3\",\r\n  \"description_Area\" : \"conference or meeting rooms\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Area?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Area"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteArea",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Area",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Area"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Classroom",
+			"item": [
+				{
+					"name": "GetClassroom",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.19.8.7:5174/Classroom",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Classroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostClassroom",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Classroom\" : \"ultra3\",\r\n  \"description_Classroom\" : \"conference or meeting classroom\",\r\n  \"classroom_Area\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Classroom",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Classroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutClassroom",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Classroom\" : \"ultra3\",\r\n  \"description_Classroom\" : \"conference or meeting classroom\",\r\n  \"classroom_Area\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Classroom?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Classroom"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteClassroom",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Classroom",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Classroom"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Category_Inc",
+			"item": [
+				{
+					"name": "GetCategory_Inc",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.19.8.7:5174/Category_Inc",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Category_Inc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostCategory_Inc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Category_Inc\" : \"null\",\r\n  \"description_Category_Inc\" : \"null category\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Category_Inc",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Category_Inc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutCategory_Inc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Category_Inc\" : \"null\",\r\n  \"description_Category_Inc\" : \"null category\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Category_Inc?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Category_Inc"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCategory_Inc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Category_Inc",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Category_Inc"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Type_Inc",
+			"item": [
+				{
+					"name": "GetType_Inc",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.19.8.7:5174/Type_Inc",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Type_Inc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostType_Inc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Type_Inc\" : \"wifi2\",\r\n  \"description_Type_Inc\" : \"Refers to incidents related to wifi or web conection.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Type_Inc",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Type_Inc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutType_Inc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Type_Inc\" : \"wifi2\",\r\n  \"description_Type_Inc\" : \"Refers to incidents related to wifi or web conection.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Type_Inc?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Type_Inc"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteType_Inc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Type_Inc",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Type_Inc"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Document_type",
+			"item": [
+				{
+					"name": "GetDocument_type",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.19.8.7:5174/Document_type",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Document_type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostDocument_type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Document\" : \"DNI\",\r\n  \"abbreviation_Document\" : \"DNI.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Document_type",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Document_type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutDocument_type",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Document\" : \"DNI\",\r\n  \"abbreviation_Document\" : \"DNI.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Document_type?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Document_type"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteDocument_type",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Document_type",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Document_type"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Gender",
+			"item": [
+				{
+					"name": "GetGender",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.19.8.7:5174/Gender",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Gender"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostGender",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Gender\" : \"unidentified\",\r\n  \"abbreviation_Gender\" : \"ND\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Gender",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Gender"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutGender",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Gender\" : \"unidentified\",\r\n  \"abbreviation_Gender\" : \"ND\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Gender?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Gender"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteGender",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Gender",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Gender"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Comp_Status",
+			"item": [
+				{
+					"name": "GetComp_Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.19.8.7:5174/Comp_Status",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Comp_Status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostComp_Status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Status\" : \"unidentified\",\r\n  \"description_Status\" : \"ND\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Comp_Status",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Comp_Status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutComp_Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_Status\" : \"unidentified\",\r\n  \"description_Status\" : \"ND\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Comp_Status?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Comp_Status"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteComp_Status",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Comp_Status",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Comp_Status"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GetUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.19.8.7:5174/User",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_User\" : \"Silver\",\r\n  \"typeDoc_User\" : 1,\r\n  \"identification_User\" : 15665455,\r\n  \"age_User\" : 15,\r\n  \"email_User\" : \"prueba1@gmail.com\",\r\n  \"password_User\" : \"1234\",\r\n  \"roles_User\" : [\"CsWscXvepmrk0769\"],\r\n  \"cellphone_User\" : 315236545,\r\n  \"gender_User\" : 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/User",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_User\" : \"Silver\",\r\n  \"typeDoc_User\" : 1,\r\n  \"identification_User\" : 15665455,\r\n  \"age_User\" : 15,\r\n  \"email_User\" : \"prueba1@gmail.com\",\r\n  \"password_User\" : \"1234\",\r\n  \"roles_User\" : [\"CsWscXvepmrk0769\"],\r\n  \"cellphone_User\" : 315236545,\r\n  \"gender_User\" : 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/User?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"User"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/User",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"User"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Incidents",
+			"item": [
+				{
+					"name": "SpecialRoutes",
+					"item": [
+						{
+							"name": "incidents-date",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Version",
+										"value": "1.1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"start_Date\" : \"2023-09-24\",\r\n  \"end_Date\" : \"2023-09-26\",\r\n  \"filter_Date\" : \"incidentDate\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.19.8.7:5174/Incidents/incidents-date",
+									"protocol": "http",
+									"host": [
+										"127",
+										"19",
+										"8",
+										"7"
+									],
+									"port": "5174",
+									"path": [
+										"Incidents",
+										"incidents-date"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetIncidentsPerId",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Version",
+										"value": "1.6.0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.19.8.7:5174/Incidents?id=1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"19",
+										"8",
+										"7"
+									],
+									"port": "5174",
+									"path": [
+										"Incidents"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "total-incidents",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Version",
+										"value": "1.0.0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.19.8.7:5174/Incidents/total-incidents?id=1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"19",
+										"8",
+										"7"
+									],
+									"port": "5174",
+									"path": [
+										"Incidents",
+										"total-incidents"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GetIncidents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.19.8.7:5174/Incidents",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Incidents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostIncidents",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"category_Incident\" : 1,\r\n  \"type_Incident\" : 4,\r\n  \"solution_Incident\": null,\r\n  \"desc_Solution_Incident\": null,\r\n  \"area_Incident\" : 1,\r\n  \"classroom_Incident\" : 2,\r\n  \"user_Incident\" : 10,\r\n  \"desc_Incident\" : \"the spunikt room has a dirty wall\",\r\n  \"pc_Incident\" : null,\r\n  \"peripheral_Incident\" : \"Keyboards\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Incidents",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Incidents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutIncidents",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"category_Incident\" : 1,\r\n  \"type_Incident\" : 1,\r\n  \"solution_Incident\": null,\r\n  \"desc_Solution_Incident\": null,\r\n  \"area_Incident\" : 1,\r\n  \"classroom_Incident\" : 1,\r\n  \"user_Incident\" : 1,\r\n  \"desc_Incident\" : \"gamers headphones have a loose cable\",\r\n  \"pc_Incident\" : 1,\r\n  \"peripheral_Incident\" : \"Keyboards\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Incidents?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Incidents"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteIncidents",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Incidents",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Incidents"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Computers",
+			"item": [
+				{
+					"name": "SpecialRoutes",
+					"item": [
+						{
+							"name": "GetIncidentsPerId",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Version",
+										"value": "1.6.0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.19.8.7:5174/Incidents?id=1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"19",
+										"8",
+										"7"
+									],
+									"port": "5174",
+									"path": [
+										"Incidents"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GetComputers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.19.8.7:5174/Computers",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Computers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostComputers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"brand_Computer\" : \"Compumax\",\r\n  \"computer_Status\" : 2,\r\n  \"description_Computer\" : \"computer in part and services\",\r\n  \"computer_Classroom\" : 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Computers",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Computers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutComputers",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"brand_Computer\" : \"Compumax\",\r\n  \"computer_Status\" : 2,\r\n  \"description_Computer\" : \"computer in part and services\",\r\n  \"computer_Classroom\" : 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Computers?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Computers"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteComputers",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.0.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/Computers",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"Computers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "loginNative",
+			"item": [
+				{
+					"name": "UserCreation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_User\" : \"Juan Jose Duran\",\r\n  \"typeDoc_User\" : 1,\r\n  \"identification_User\" : 1097782901,\r\n  \"age_User\" : 18,\r\n  \"email_User\" : \"thegoldenjuan1987@gmail.com\",\r\n  \"password_User\" : \"macker\",\r\n  \"roles_User\" : [\"CsWscGexsiv6578\", \"YsWscQ1t3735\"],\r\n  \"versions_User\" : [ \"1.0.0\", \"1.1.0\", \"1.2.0\"],\r\n  \"cellphone_User\" : 315236545,\r\n  \"gender_User\" : 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/UserCreation",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"UserCreation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsersNotAuthorized",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.19.8.7:5174/UserCreation/UsersNotAuthorized",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"UserCreation",
+								"UsersNotAuthorized"
+							],
+							"query": [
+								{
+									"key": "Accept-Version",
+									"value": "1.1.0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUserNotAuthorized",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.1.0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_User\" : \"Juan Jose Duran\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/UserCreation/deleteUserNotAuthorized",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"UserCreation",
+								"deleteUserNotAuthorized"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authorizeUsers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Version",
+								"value": "1.1.0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_User\" : \"Juan Jose Duran\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/UserCreation/authorizeUsers",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"UserCreation",
+								"authorizeUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SendRecoveryCode",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_User\": \"Juan Jose Duran\",\r\n  \"email_User\": \"thegoldenjuan1987@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/SendRecoveryCode",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"SendRecoveryCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RecoveryPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_User\": \"Juan Jose Duran\",\r\n  \"email_User\": \"thegoldenjuan1987@gmail.com\",\r\n  \"password_User\": \"Aurora1987\",\r\n  \"code_Recovery\": \"xp1y7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/RecoveryPassword",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"RecoveryPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name_User\" : \"TotixT\",\r\n  \"password_User\" : \"diosesamor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/LoginUser",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"LoginUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserToken",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.19.8.7:5174/LoginUser/UserToken?id=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"19",
+								"8",
+								"7"
+							],
+							"port": "5174",
+							"path": [
+								"LoginUser",
+								"UserToken"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOYW1lIjoiSnVhbkpvc2UiLCJQYXNzd29yZCI6Ik1vbm9jaHJvbWUiLCJpZF9Vc2VyIjoxMCwiVmVyc2lvbnMiOlsiMS4wLjAiLCIxLjAuMSIsIjEuMC4yIiwiMS4xLjAiLCIxLjIuMCIsIjEuMy4wIiwiMS40LjAiLCIxLjUuMCIsIjEuNi4wIiwiMS43LjAiXSwiQXV0aG9yaXphdGlvbiI6dHJ1ZSwiQ29kZV9Sb2wiOlsiQ2FtcGVyIiwiTTIiXSwiaWF0IjoxNjk2NDI3NDc0LCJleHAiOjE2OTY0MzQ2NzR9.V74DVjUgDVOzdbYADesgX-KDv-mDoWHxSGUOeVcJqHg",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
